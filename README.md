@@ -23,6 +23,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Valoriza é uma plataforma para promover o reconhecimento entre companheiros de equipe.
 
+## 🔖 Detalhes no Notion
+
+Podemos ver mais detalhes do projeto através [desse link](https://www.notion.so/Mission-Node-js-a25b063cc195465180563951d03e2459) no Notion.  
+
 ## 🚀 Como executar
 
 - Clone o repositório
@@ -36,5 +40,7 @@ Por fim, a aplicação estará disponível em `http://localhost:3000`
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
----
-Feito com 💜 &nbsp;by Rocketseat 👋🏻 &nbsp;[Participe da nossa comunidade!](https://discord.gg/gKUVrzrPrU)
+---  
+
+Feito com ❤️ por Douglas A B Novato 👋🏽 [Entre em contato!](https://www.linkedin.com/in/douglasabnovato/) 
+Fonte do projeto Por Rocketseat no [Next Level Week Together](https://nextlevelweek.com/)
