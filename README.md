@@ -18,10 +18,20 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Typescript](https://www.typescriptlang.org/)
 - [Express](https://expressjs.com/pt-br/)
 - [JSONWebToken](https://github.com/auth0/node-jsonwebtoken#readme)
+- Npm, Yarn
+- VSCode
+- Extensão: jetbrains mono
 
 ## 💻 Projeto
 
 Valoriza é uma plataforma para promover o reconhecimento entre companheiros de equipe.
+
+## 💻 Detalhes do Projeto
+- Cadastro de usuários 
+- Cadastro de tags: somente usuário administrador
+- Cadastro de elogios: id do usuário, id da tag, data da criação
+- Autenticação de usuário: gerar token jwt, validar usuário logado nas rotas necessárias
+- Listagem de Usuários, de tags, de elogios por usuários
 
 ## 🔖 Detalhes no Notion
 
