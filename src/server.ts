@@ -13,6 +13,16 @@ app.use(express.json());
 
 app.use(router);
 
+/** Rotas de testes */
+app.get("/test", (req, res) => {
+  return res.send("Olá NLW, método GET.")
+})
+
+app.post("/test-post", (req, res) => {
+  return res.send("Olá NLW, método POST")
+})
+/** FIM - Rotas de testes */
+
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof Error) {
@@ -28,4 +38,4 @@ app.use(
   }
 );
 
-app.listen(3000, () => console.log("Server is running"));
+app.listen(3000, () => console.log("Server is running!"));
