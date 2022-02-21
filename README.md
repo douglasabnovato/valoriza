@@ -30,6 +30,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Extensão: jetbrains mono
 - Postgree: banco de dados
 - Linguagem SQL
+- TypeORM
 
 ## 💻 Detalhes do Projeto
 
@@ -86,7 +87,14 @@ Modelar, Criar e entender o banco de dados
 - Escolha para nossa aplicação é o TypeORM
 
 Criar, configurar o banco de dados
-- [ ]
+- [x] TypeORM
+- Instalação: `yarn add typeorm reflect-metadata sqlite3`
+- Configuração através do arquivo json: `ormconfig.json`
+- Inicialização do bd: `src/database/index.ts`
+- Importação do bd no server: `import "./database";`
+- [ ] Migrations: controle de versionamento de tabelas
+- configuração no ormconfig.json - cli: migrationsDir, entitiesDir
+ 
 
 - [ ] Cadastro de usuários 
 - [ ] Cadastro de tags (elogios possíveis): somente usuário administrador
