@@ -28,9 +28,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Express](https://expressjs.com/pt-br/)
 - [JSONWebToken](https://github.com/auth0/node-jsonwebtoken#readme)
 - Extensão: jetbrains mono
+- Postgree: banco de dados
+- Linguagem SQL
 
 ## 💻 Detalhes do Projeto
 
+### Liftoff
 Instalar, Configurar e Testar o typescript no projeto
 - [x] criar o projeto: `yarn init -y`: para criar o package.json
 - [x] adicionar o typescript: `yarn add typescript -D`
@@ -69,6 +72,21 @@ app.post("/test-post", (req, res) => {
 Construir e testar as requisições as rotas no insomnia
 - [x] rota test com método GET
 - [x] rota test-post com método POST
+
+### Maximum Speed
+Modelar, Criar e entender o banco de dados
+- [x] O modelo de informações
+- [x] Tipos de Parâmetros de requisições:
+- Routes params: http://localhost:3000/produtos/78347583458345
+- Query params: http://localhost:3000/produtos?name=teclado&descreption=tecladobom
+- Body params: {"name": "teclado", "description":"tecladobom"}
+- [x] Escolha do banco de dados para nossa necessidade de armazenamento de informações: 
+- Opções de banco de dados: Postgree 
+- Três formas de usar o banco de dados na aplicação: driver nativo do bd(Postgree), query builders(Knexjs), ORM(Sequelize, TypeORM, Prisma)
+- Escolha para nossa aplicação é o TypeORM
+
+Criar, configurar o banco de dados
+- [ ]
 
 - [ ] Cadastro de usuários 
 - [ ] Cadastro de tags (elogios possíveis): somente usuário administrador
