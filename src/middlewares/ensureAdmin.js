@@ -46,7 +46,7 @@ function ensureAdmin(request, response, next) {
             switch (_a.label) {
                 case 0:
                     user_id = request.user_id;
-                    usersRepositories = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                    usersRepositories = (0, typeorm_1.getCustomRepository)(UsersRepositories_1.UsersRepositories);
                     return [4 /*yield*/, usersRepositories.findOne(user_id)];
                 case 1:
                     admin = (_a.sent()).admin;

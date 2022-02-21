@@ -51,7 +51,7 @@ var AuthenticateUserService = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        usersRepositories = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        usersRepositories = (0, typeorm_1.getCustomRepository)(UsersRepositories_1.UsersRepositories);
                         return [4 /*yield*/, usersRepositories.findOne({
                                 email: email,
                             })];
@@ -60,13 +60,13 @@ var AuthenticateUserService = /** @class */ (function () {
                         if (!user) {
                             throw new Error("Email/Password incorrect");
                         }
-                        return [4 /*yield*/, bcryptjs_1.compare(password, user.password)];
+                        return [4 /*yield*/, (0, bcryptjs_1.compare)(password, user.password)];
                     case 2:
                         passwordMatch = _b.sent();
                         if (!passwordMatch) {
                             throw new Error("Email/Password incorrect");
                         }
-                        token = jsonwebtoken_1.sign({
+                        token = (0, jsonwebtoken_1.sign)({
                             email: user.email,
                         }, "4f93ac9d10cb751b8c9c646bc9dbccb9", {
                             subject: user.id,

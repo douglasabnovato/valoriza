@@ -16,36 +16,36 @@ var uuid_1 = require("uuid");
 var Tag = /** @class */ (function () {
     function Tag() {
         if (!this.id) {
-            this.id = uuid_1.v4();
+            this.id = (0, uuid_1.v4)();
         }
     }
     Tag.prototype.nameCustom = function () {
-        return "#" + this.name;
+        return "#".concat(this.name);
     };
     __decorate([
-        typeorm_1.PrimaryColumn(),
+        (0, typeorm_1.PrimaryColumn)(),
         __metadata("design:type", String)
     ], Tag.prototype, "id", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], Tag.prototype, "name", void 0);
     __decorate([
-        typeorm_1.CreateDateColumn(),
+        (0, typeorm_1.CreateDateColumn)(),
         __metadata("design:type", Date)
     ], Tag.prototype, "created_at", void 0);
     __decorate([
-        typeorm_1.UpdateDateColumn(),
+        (0, typeorm_1.UpdateDateColumn)(),
         __metadata("design:type", Date)
     ], Tag.prototype, "updated_at", void 0);
     __decorate([
-        class_transformer_1.Expose({ name: "name_custom" }),
+        (0, class_transformer_1.Expose)({ name: "name_custom" }),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", String)
     ], Tag.prototype, "nameCustom", null);
     Tag = __decorate([
-        typeorm_1.Entity("tags"),
+        (0, typeorm_1.Entity)("tags"),
         __metadata("design:paramtypes", [])
     ], Tag);
     return Tag;

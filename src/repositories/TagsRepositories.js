@@ -30,7 +30,7 @@ var TagsRepositories = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     TagsRepositories = __decorate([
-        typeorm_1.EntityRepository(Tag_1.Tag)
+        (0, typeorm_1.EntityRepository)(Tag_1.Tag)
     ], TagsRepositories);
     return TagsRepositories;
 }(typeorm_1.Repository));

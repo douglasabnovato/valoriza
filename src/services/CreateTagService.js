@@ -48,7 +48,7 @@ var CreateTagService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        tagsRepositories = typeorm_1.getCustomRepository(TagsRepositories_1.TagsRepositories);
+                        tagsRepositories = (0, typeorm_1.getCustomRepository)(TagsRepositories_1.TagsRepositories);
                         if (!name) {
                             throw new Error("Incorrect name!");
                         }

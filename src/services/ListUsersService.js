@@ -49,11 +49,11 @@ var ListUserService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        usersRepositories = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        usersRepositories = (0, typeorm_1.getCustomRepository)(UsersRepositories_1.UsersRepositories);
                         return [4 /*yield*/, usersRepositories.find()];
                     case 1:
                         users = _a.sent();
-                        return [2 /*return*/, class_transformer_1.classToPlain(users)];
+                        return [2 /*return*/, (0, class_transformer_1.classToPlain)(users)];
                 }
             });
         });

@@ -30,7 +30,7 @@ var ComplimentsRepositories = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     ComplimentsRepositories = __decorate([
-        typeorm_1.EntityRepository(Compliment_1.Compliment)
+        (0, typeorm_1.EntityRepository)(Compliment_1.Compliment)
     ], ComplimentsRepositories);
     return ComplimentsRepositories;
 }(typeorm_1.Repository));

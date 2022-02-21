@@ -49,11 +49,11 @@ var ListTagsService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        tagsRepositories = typeorm_1.getCustomRepository(TagsRepositories_1.TagsRepositories);
+                        tagsRepositories = (0, typeorm_1.getCustomRepository)(TagsRepositories_1.TagsRepositories);
                         return [4 /*yield*/, tagsRepositories.find()];
                     case 1:
                         tags = _a.sent();
-                        return [2 /*return*/, class_transformer_1.classToPlain(tags)];
+                        return [2 /*return*/, (0, class_transformer_1.classToPlain)(tags)];
                 }
             });
         });

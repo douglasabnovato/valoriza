@@ -50,8 +50,8 @@ var CreateComplimentService = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        complimentsRepositories = typeorm_1.getCustomRepository(ComplimentsRepositories_1.ComplimentsRepositories);
-                        usersRepositories = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        complimentsRepositories = (0, typeorm_1.getCustomRepository)(ComplimentsRepositories_1.ComplimentsRepositories);
+                        usersRepositories = (0, typeorm_1.getCustomRepository)(UsersRepositories_1.UsersRepositories);
                         if (user_sender === user_receiver) {
                             throw new Error("Incorrect User Receiver");
                         }

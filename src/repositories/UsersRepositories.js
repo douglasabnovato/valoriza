@@ -30,7 +30,7 @@ var UsersRepositories = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     UsersRepositories = __decorate([
-        typeorm_1.EntityRepository(User_1.User)
+        (0, typeorm_1.EntityRepository)(User_1.User)
     ], UsersRepositories);
     return UsersRepositories;
 }(typeorm_1.Repository));

@@ -12,7 +12,7 @@ function ensureAuthenticated(request, response, next) {
     var _a = authToken.split(" "), token = _a[1];
     try {
         // Validar se token é válido
-        var sub = jsonwebtoken_1.verify(token, "4f93ac9d10cb751b8c9c646bc9dbccb9").sub;
+        var sub = (0, jsonwebtoken_1.verify)(token, "4f93ac9d10cb751b8c9c646bc9dbccb9").sub;
         // Recuperar informações do usuário
         request.user_id = sub;
         return next();

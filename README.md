@@ -30,13 +30,38 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Extensão: jetbrains mono
 
 ## 💻 Detalhes do Projeto
-Configurar o typescript no projeto e testar
+
+Instalar, Configurar e Testar o typescript no projeto
 - [x] criar o projeto: `yarn init -y`: para criar o package.json
 - [x] adicionar o typescript: `yarn add typescript -D`
 - [x] executar no node: `node testtypescript.ts`
 - [x] inicializar o typescript: `yarn tsc --init` 
-- [x] converter o typescript: `yarn tsc` 
+- [x] converter o typescript: `yarn tsc` então cria o `testtypescript.js` 
 - [x] executar no node: `node testtypescript.js`
+
+Instalar, Configurar e Testar o express no projeto
+- [x] adicionar o express: `yarn add express`
+- [x] adicionar o biblioteca de tipagem: `yarn add @types/express -D`
+- [x] converter o typescript: `yarn tsc` então cria o `server.js` 
+- [x] executar no node: `node src/server.js`
+- [x] `yarn add ts-node-dev -D`: para não ficar executando tsc todo vez.
+- [x] src/server.ts
+````typescript
+import express from "express";
+const app = express();//@types/express
+app.listen(3000, () => console.log("Server is running"));//http://localhost:3000
+````
+
+Instalar, Configurar e Testar as routes no projeto
+- [ ] duas rotas testes
+````typescript 
+app.get("/test", (req, res) => {
+  return res.send("Olá NLW, método GET.")
+})
+app.post("/test-post", (req, res) => {
+  return res.send("Olá NLW, método POST")
+}) 
+````
 
 - [ ] Cadastro de usuários 
 - [ ] Cadastro de tags (elogios possíveis): somente usuário administrador

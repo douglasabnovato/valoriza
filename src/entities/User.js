@@ -16,40 +16,40 @@ var uuid_1 = require("uuid");
 var User = /** @class */ (function () {
     function User() {
         if (!this.id) {
-            this.id = uuid_1.v4();
+            this.id = (0, uuid_1.v4)();
         }
     }
     __decorate([
-        typeorm_1.PrimaryColumn(),
+        (0, typeorm_1.PrimaryColumn)(),
         __metadata("design:type", String)
     ], User.prototype, "id", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], User.prototype, "name", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], User.prototype, "email", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", Boolean)
     ], User.prototype, "admin", void 0);
     __decorate([
-        class_transformer_1.Exclude(),
-        typeorm_1.Column(),
+        (0, class_transformer_1.Exclude)(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], User.prototype, "password", void 0);
     __decorate([
-        typeorm_1.CreateDateColumn(),
+        (0, typeorm_1.CreateDateColumn)(),
         __metadata("design:type", Date)
     ], User.prototype, "created_at", void 0);
     __decorate([
-        typeorm_1.UpdateDateColumn(),
+        (0, typeorm_1.UpdateDateColumn)(),
         __metadata("design:type", Date)
     ], User.prototype, "updated_at", void 0);
     User = __decorate([
-        typeorm_1.Entity("users"),
+        (0, typeorm_1.Entity)("users"),
         __metadata("design:paramtypes", [])
     ], User);
     return User;

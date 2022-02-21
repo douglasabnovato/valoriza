@@ -48,7 +48,7 @@ var ListUserSendComplimentsService = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        complimentsRepositories = typeorm_1.getCustomRepository(ComplimentsRepositories_1.ComplimentsRepositories);
+                        complimentsRepositories = (0, typeorm_1.getCustomRepository)(ComplimentsRepositories_1.ComplimentsRepositories);
                         return [4 /*yield*/, complimentsRepositories.find({
                                 where: {
                                     user_sender: user_id,

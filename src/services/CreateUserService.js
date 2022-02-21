@@ -50,7 +50,7 @@ var CreateUserService = /** @class */ (function () {
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
-                        usersRepository = typeorm_1.getCustomRepository(UsersRepositories_1.UsersRepositories);
+                        usersRepository = (0, typeorm_1.getCustomRepository)(UsersRepositories_1.UsersRepositories);
                         if (!email) {
                             throw new Error("Email incorrect");
                         }
@@ -62,7 +62,7 @@ var CreateUserService = /** @class */ (function () {
                         if (userAlreadyExists) {
                             throw new Error("User already exists");
                         }
-                        return [4 /*yield*/, bcryptjs_1.hash(password, 8)];
+                        return [4 /*yield*/, (0, bcryptjs_1.hash)(password, 8)];
                     case 2:
                         passwordHash = _c.sent();
                         user = usersRepository.create({
