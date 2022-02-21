@@ -53,7 +53,9 @@ app.listen(3000, () => console.log("Server is running"));//http://localhost:3000
 ````
 
 Instalar, Configurar e Testar as routes no projeto
-- [ ] duas rotas testes
+- [x] métodos disponíveis no protocolo http: get(buscar), post(inserir), put(editar), delete(remover), patch(alterar uma informação específica)
+- [x] request(entrando), response(saíndo)
+- [x] duas rotas testes
 ````typescript 
 app.get("/test", (req, res) => {
   return res.send("Olá NLW, método GET.")
@@ -62,6 +64,11 @@ app.post("/test-post", (req, res) => {
   return res.send("Olá NLW, método POST")
 }) 
 ````
+- [x] o método post não funciona diretamente pelo navegador, somente o get. Por isso, vamos ao insomnia para testar nossos métodos de requisição.
+
+Construir e testar as requisições as rotas no insomnia
+- [x] rota test com método GET
+- [x] rota test-post com método POST
 
 - [ ] Cadastro de usuários 
 - [ ] Cadastro de tags (elogios possíveis): somente usuário administrador
