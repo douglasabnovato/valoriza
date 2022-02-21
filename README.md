@@ -10,23 +10,34 @@
   <img alt="Preview" src="./.github/preview.png">
 </p>
 
-## ✨ Tecnologias
-
-Esse projeto foi desenvolvido com as seguintes tecnologias:
-
-- [Node.js](https://nodejs.org/en/)
-- [Typescript](https://www.typescriptlang.org/)
-- [Express](https://expressjs.com/pt-br/)
-- [JSONWebToken](https://github.com/auth0/node-jsonwebtoken#readme)
-- Npm, Yarn
-- VSCode
-- Extensão: jetbrains mono
 
 ## 💻 Projeto
 
 Valoriza é uma plataforma para promover o reconhecimento entre companheiros de equipe.
 
+## ✨ Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- VSCode: editor de código
+- [Node.js](https://nodejs.org/en/): 
+- Npm, Yarn: Gerenciador de pacotes
+- Insomnia: testar as requisições
+- Beekeeper: Gerenciador de bd
+- [Typescript](https://www.typescriptlang.org/)
+- [Express](https://expressjs.com/pt-br/)
+- [JSONWebToken](https://github.com/auth0/node-jsonwebtoken#readme)
+- Extensão: jetbrains mono
+
 ## 💻 Detalhes do Projeto
+Configurar o typescript no projeto e testar
+- [x] criar o projeto: `yarn init -y`: para criar o package.json
+- [x] adicionar o typescript: `yarn add typescript -D`
+- [x] executar no node: `node testtypescript.ts`
+- [x] inicializar o typescript: `yarn tsc --init` 
+- [x] converter o typescript: `yarn tsc` 
+- [x] executar no node: `node testtypescript.js`
+
 - [ ] Cadastro de usuários 
 - [ ] Cadastro de tags (elogios possíveis): somente usuário administrador
 - [ ] Cadastro de elogios: id do usuário, id da tag, data da criação
