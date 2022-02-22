@@ -75,6 +75,8 @@ Construir e testar as requisições as rotas no insomnia
 - [x] rota test-post com método POST
 
 ### Maximum Speed
+- [x] Cadastro de usuários
+
 Modelar, Criar e entender o banco de dados
 - [x] O modelo de informações
 - [x] Tipos de Parâmetros de requisições:
@@ -112,12 +114,12 @@ Criar a camada Repositório que comunica nossa entidade com o BD
 
 As regras de Negócio
 Cadastro de Usuário
-- Não é permitido cadastrar mais de um usuário com o mesmo e-mail
-- Não é permitido cadastrar usuário sem e-mail
+- [x] Não é permitido cadastrar mais de um usuário com o mesmo e-mail
+- [x] Não é permitido cadastrar usuário sem e-mail
 Cadastro de TAG
-- Não é permitido cadastrar mais de uma tag com o mesmo nome
-- Não é permitido cadastrar tag sem nome
-- Não é permitido o cadastro por usuários que não sejam administradores
+- [x] Não é permitido cadastrar mais de uma tag com o mesmo nome
+- [x] Não é permitido cadastrar tag sem nome
+- [x] Não é permitido o cadastro por usuários que não sejam administradores
 Cadastro de elogios
 - Não é permitido um usuário cadastrar um elogio para si mesmo
 - Não é permitido cadastrar elogios para usuários inválidos
@@ -132,8 +134,31 @@ Criar e configurar a camada Controllers
 - gerir as rotas: criar arquivo routes.ts
 - testar no insomnia _.baseURL/users com CreateUser[POST/JSON]
 
-- [ ] Cadastro de usuários 
+Tratamento de excessão
+- não usar try/catch (throw) diretamente no código
+- tratar no server.ts
+
 - [ ] Cadastro de tags (elogios possíveis): somente usuário administrador
+Criar a migration de TAG
+- criado a migration: `yarn typeorm migration:create -n CreateTags`
+- criado a estrutura de tags no bd:`yarn typeorm migration:run`
+
+Criar o repositório de TAG
+- configurar TagsRepositories.ts
+
+Criar o services de TAG
+- configurar CreateTagService.ts
+- atenção a regra de negócio para a tag
+
+Criar o controller de TAG
+- CreateTagController.ts
+- importar na routes
+- testar no insomnia _.baseURL/tags com CreateTag[POST/JSON]
+
+Não é permitido o cadastro por usuários que não sejam administradores
+- criar um middleware para verificar se o usuário é o administrador: ensureAdmin.ts
+- ainda sem o token jwt, podemos colocar true ou false para o admin para testar permissão
+
 - [ ] Cadastro de elogios: id do usuário, id da tag, data da criação
 - [ ] Autenticação de usuário: gerar token jwt, validar usuário logado nas rotas necessárias
 - [ ] Listagem de Usuários, Listagem de tags, Listagem de elogios por usuários

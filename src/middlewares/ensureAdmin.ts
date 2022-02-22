@@ -13,8 +13,6 @@ export async function ensureAdmin(
 
   const { admin } = await usersRepositories.findOne(user_id);
 
-  // Verificar se usuario admin
-
   if (admin) {
     return next();
   }
