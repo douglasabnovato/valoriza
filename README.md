@@ -95,13 +95,16 @@ Criar, configurar o banco de dados em ormconfig.json
 - [x] Migrations: controle de versionamento de tabelas
 - configuração no ormconfig.json - cli: migrationsDir, entitiesDir
 - `yarn typeorm -help`
-- [ ] Criar entidades Migrations
+- [x] Criar entidades Migrations (Usuário)
 - `yarn typeorm migration:create -n CreateUsersTest`
 - métodos up e down 
 - configurando em createTable na CreateUsers conforme o modelo de negócios apresentado anteriormente.
 - configurando em dropTable na CreateUsers
 - rodar a migrations para inserir no banco de dados:`yarn typeorm migration:run`
 - rodar a migrations para reverter no banco de dados:`yarn typeorm migration:revert`
+- criar entidades no banco de dados: `yarn typeorm entity:create -n User`
+- em tsconfig.json, configurar "experimentalDecorators": true, "emitDecoratorMetadata": true e "strictPropertyInitialization": false
+- instalar biblioteca: `yarn add uuid` e suas tipagens: `yarn add @types/uuid -D`
 
 - [ ] Cadastro de usuários 
 - [ ] Cadastro de tags (elogios possíveis): somente usuário administrador
