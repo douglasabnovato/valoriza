@@ -86,15 +86,22 @@ Modelar, Criar e entender o banco de dados
 - Três formas de usar o banco de dados na aplicação: driver nativo do bd(Postgree), query builders(Knexjs), ORM(Sequelize, TypeORM, Prisma)
 - Escolha para nossa aplicação é o TypeORM
 
-Criar, configurar o banco de dados
+Criar, configurar o banco de dados em ormconfig.json
 - [x] TypeORM
 - Instalação: `yarn add typeorm reflect-metadata sqlite3`
 - Configuração através do arquivo json: `ormconfig.json`
 - Inicialização do bd: `src/database/index.ts`
 - Importação do bd no server: `import "./database";`
-- [ ] Migrations: controle de versionamento de tabelas
+- [x] Migrations: controle de versionamento de tabelas
 - configuração no ormconfig.json - cli: migrationsDir, entitiesDir
- 
+- `yarn typeorm -help`
+- [ ] Criar entidades Migrations
+- `yarn typeorm migration:create -n CreateUsersTest`
+- métodos up e down 
+- configurando em createTable na CreateUsers conforme o modelo de negócios apresentado anteriormente.
+- configurando em dropTable na CreateUsers
+- rodar a migrations para inserir no banco de dados:`yarn typeorm migration:run`
+- rodar a migrations para reverter no banco de dados:`yarn typeorm migration:revert`
 
 - [ ] Cadastro de usuários 
 - [ ] Cadastro de tags (elogios possíveis): somente usuário administrador
