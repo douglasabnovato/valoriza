@@ -106,6 +106,21 @@ Criar, configurar o banco de dados em ormconfig.json
 - em tsconfig.json, configurar "experimentalDecorators": true, "emitDecoratorMetadata": true e "strictPropertyInitialization": false
 - instalar biblioteca: `yarn add uuid` e suas tipagens: `yarn add @types/uuid -D`
 
+Criar a camada Repositório que comunica nossa entidade com o BD
+- Configurar os métodos CRUD para interagir com o bd: `Repositories/UsersRepositories.ts`
+- Configurar os services - as regras de negócio
+
+As regras de Negócio
+Cadastro de Usuário
+- Não é permitido cadastrar mais de um usuário com o mesmo e-mail
+- Não é permitido cadastrar usuário sem e-mail
+Cadastro de TAG
+- Não é permitido cadastrar mais de uma tag com o mesmo nome
+- Não é permitido cadastrar tag sem nome
+- Não é permitido o cadastro por usuários que não sejam administradores
+Cadastro de elogios
+- Não é permitido um usuário cadastrar um elogio para si mesmo
+
 - [ ] Cadastro de usuários 
 - [ ] Cadastro de tags (elogios possíveis): somente usuário administrador
 - [ ] Cadastro de elogios: id do usuário, id da tag, data da criação
