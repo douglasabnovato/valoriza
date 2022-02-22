@@ -120,6 +120,17 @@ Cadastro de TAG
 - Não é permitido o cadastro por usuários que não sejam administradores
 Cadastro de elogios
 - Não é permitido um usuário cadastrar um elogio para si mesmo
+- Não é permitido cadastrar elogios para usuários inválidos
+- O usuário precisa estar autenticado na aplicação
+
+Criar e configurar a camada Services
+- CreateUserService.ts
+
+Criar e configurar a camada Controllers
+- CreateUserController.ts
+- Insomnia: CreateUser, POST, JSON
+- gerir as rotas: criar arquivo routes.ts
+- testar no insomnia _.baseURL/users com CreateUser[POST/JSON]
 
 - [ ] Cadastro de usuários 
 - [ ] Cadastro de tags (elogios possíveis): somente usuário administrador
