@@ -125,6 +125,8 @@ Cadastro de elogios
 - Não é permitido cadastrar elogios para usuários inválidos
 - O usuário precisa estar autenticado na aplicação
 
+### In Orbit
+
 Criar e configurar a camada Services
 - CreateUserService.ts
 
@@ -159,8 +161,22 @@ Não é permitido o cadastro por usuários que não sejam administradores
 - criar um middleware para verificar se o usuário é o administrador: ensureAdmin.ts
 - ainda sem o token jwt, podemos colocar true ou false para o admin para testar permissão
 
+### Landing
+
+Autenticação de usuário: gerar token jwt, validar usuário logado nas rotas necessárias
+- `yarn add jsonwebtoken`
+- `yarn add @types/jsonwebtoken -D`
+- criar estrutura para gerar o token com o jwt
+- criar uma migration para adicionar uma coluna de senha na nossa tabela no bd: `yarn typeorm migration:create -n AlterUserAddPassword`
+- rodar nossa migration: `yarn typeorm migration:run`
+- mudar nossa entidade
+- mudar nosso repositório
+- mudar nosso service
+- mudar nosso controller
+- criptografar nossa senha antes de enviar para o repositório: `yarn add bcryptjs` e `yarn add @types/bcryptjs -D`
+- em services/createUserService.ts aplico a conversão na password:`const passwordHash = await hash(password, 8);` 
+
 - [ ] Cadastro de elogios: id do usuário, id da tag, data da criação
-- [ ] Autenticação de usuário: gerar token jwt, validar usuário logado nas rotas necessárias
 - [ ] Listagem de Usuários, Listagem de tags, Listagem de elogios por usuários
 
 ## 🔖 Detalhes no Notion
