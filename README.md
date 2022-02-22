@@ -175,6 +175,11 @@ Autenticação de usuário: gerar token jwt, validar usuário logado nas rotas n
 - mudar nosso controller
 - criptografar nossa senha antes de enviar para o repositório: `yarn add bcryptjs` e `yarn add @types/bcryptjs -D`
 - em services/createUserService.ts aplico a conversão na password:`const passwordHash = await hash(password, 8);` 
+- criar a services/AuthenticateUserService.ts responsável por autenticar nosso usuário
+- Verificar se email existe
+- verificar se senha está correta
+- 123456 / 783645734-sdhfhsdf7762374234234
+- Gerar token
 
 - [ ] Cadastro de elogios: id do usuário, id da tag, data da criação
 - [ ] Listagem de Usuários, Listagem de tags, Listagem de elogios por usuários
