@@ -9,7 +9,7 @@ import { ListUserSendComplimentsController } from "./controllers/ListUserSendCom
 import { ListUserReceiveComplimentsController } from "./controllers/ListUserReceiveComplimentsController";
 import { ListTagsController } from "./controllers/ListTagsController";
 import { ListUsersController } from "./controllers/ListUsersController";
-
+ 
 const router = Router();
 
 const createUserController = new CreateUserController();
@@ -24,7 +24,7 @@ const listUserReceiveComplimentsController =
 const listTagsController = new ListTagsController();
 
 const listUsersController = new ListUsersController();
-
+ 
 router.post(
   "/tags",
   ensureAuthenticated,

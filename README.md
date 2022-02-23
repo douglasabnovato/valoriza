@@ -12,6 +12,11 @@
 
 Valoriza é uma plataforma para promover o reconhecimento entre companheiros de equipe.
 
+
+<p align="center">
+  <img alt="Data Model" src="./.github/modelo_dados.jpg">
+</p>
+
 ## ✨ Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
@@ -56,7 +61,7 @@ app.listen(3000, () => console.log("Server is running"));//http://localhost:3000
 Instalar, Configurar e Testar as routes no projeto
 - [x] métodos disponíveis no protocolo http: get(buscar), post(inserir), put(editar), delete(remover), patch(alterar uma informação específica)
 - [x] request(entrando), response(saíndo)
-- [x] duas rotas testes
+- [x] duas rotas testes em src/server.ts
 ````typescript 
 app.get("/test", (req, res) => {
   return res.send("Olá NLW, método GET.")
@@ -177,7 +182,10 @@ Autenticação de usuário: gerar token jwt, validar usuário logado nas rotas n
 - Verificar se email existe
 - verificar se senha está correta
 - 123456 / 783645734-sdhfhsdf7762374234234
-- Gerar token
+- Gerar token: AuthenticateUserService
+- gerar o parâmetro chave secreta: md5 generator: md5 hash
+- rota /login
+- criar a migration createCompliments
 
 - [ ] Cadastro de elogios: id do usuário, id da tag, data da criação
 - [ ] Listagem de Usuários, Listagem de tags, Listagem de elogios por usuários

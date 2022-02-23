@@ -10,7 +10,14 @@ import { router } from "./routes";
 
 import "./database";
 
-const app = express();//@types/express
+const app = express();//@types/expres  
+
+app.get("/test", (req, res) => {
+  return res.send("Olá NLW, método GET.")
+})//teste
+app.post("/test-post", (req, res) => {
+  return res.send("Olá NLW, método POST")
+}) //teste
 
 app.use(express.json());
 
