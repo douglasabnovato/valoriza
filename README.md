@@ -124,9 +124,9 @@ Cadastro de TAG
 - [x] Não é permitido cadastrar tag sem nome
 - [x] Não é permitido o cadastro por usuários que não sejam administradores
 Cadastro de elogios
-- Não é permitido um usuário cadastrar um elogio para si mesmo
-- Não é permitido cadastrar elogios para usuários inválidos
-- O usuário precisa estar autenticado na aplicação
+- [x] Não é permitido um usuário cadastrar um elogio para si mesmo
+- [x] Não é permitido cadastrar elogios para usuários inválidos
+- [x] O usuário precisa estar autenticado na aplicação
 
 ### In Orbit
 
@@ -185,7 +185,13 @@ Autenticação de usuário: gerar token jwt, validar usuário logado nas rotas n
 - Gerar token: AuthenticateUserService
 - gerar o parâmetro chave secreta: md5 generator: md5 hash
 - rota /login
-- criar a migration createCompliments
+
+Criar a Estrutura de Compliments
+- criar migration createCompliments.ts
+- criar entities/compliments.ts
+- criar repositories/ComplimentsRepositories.ts
+- criar services/createComplimentsService.ts
+- criar controller/createComplimentsController.ts
 
 - [ ] Cadastro de elogios: id do usuário, id da tag, data da criação
 - [ ] Listagem de Usuários, Listagem de tags, Listagem de elogios por usuários
