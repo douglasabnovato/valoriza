@@ -14,7 +14,8 @@ Valoriza é uma plataforma para promover o reconhecimento entre companheiros de 
 
 
 <p align="center">
-  <img alt="Data Model" src="./.github/modelo_dados.jpg">
+  <img alt="Data Model" src="./.github/requisicoes.jpg" width="450px"> 
+  <img alt="Data Model" src="./.github/modelo_dados.jpg" width="450px"> 
 </p>
 
 ## ✨ Tecnologias
@@ -208,6 +209,12 @@ Criar a Estrutura de Compliments
 - [x] fazer cadastro de elogios
 - [x] listagem dos elogios do usuário logado: ListUserReceiveComplimentsService e ListUserSendComplimentsService
 - [x] List User Compliment: Service, Controller, Routas de GET para send e para receive
+- [x] listagem das tags do usuário logado: ListTagsService
+- [x] List User Tags: Service, Controller, Routas de GET tags
+- atenção mesmas rotas com métodos diferentes pode.
+- biblioteca para customizar dados, transformar uma classe: class-transform: `yarn add class-transform`
+- configurar em tag.ts com expose para name_custom
+- listagem dos usuários: ListUserService
 
 ## 🔖 Detalhes no Notion
 
