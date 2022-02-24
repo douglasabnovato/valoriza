@@ -12,7 +12,6 @@
 
 Valoriza é uma plataforma para promover o reconhecimento entre companheiros de equipe.
 
-
 <p align="center">
   <img alt="Data Model" src="./.github/requisicoes.jpg" width="450px"> 
   <img alt="Data Model" src="./.github/modelo_dados.jpg" width="450px"> 
