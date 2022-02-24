@@ -193,8 +193,14 @@ Criar a Estrutura de Compliments
 - criar services/createComplimentsService.ts
 - criar controller/createComplimentsController.ts
 
-- [ ] Cadastro de elogios: id do usuário, id da tag, data da criação
-- [ ] Listagem de Usuários, Listagem de tags, Listagem de elogios por usuários
+### Surface Exploration
+
+- ensureAdmin
+- validar autenticação
+- corrigir compliments
+
+- [x] Cadastro de elogios: id do usuário, id da tag, data da criação
+- [x] Listagem de Usuários, Listagem de tags, Listagem de elogios por usuários
 
 ## 🔖 Detalhes no Notion
 
