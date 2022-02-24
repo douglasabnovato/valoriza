@@ -10,25 +10,23 @@ export function ensureAuthenticated(
   response: Response,
   next: NextFunction
 ) {
-  // Receber o token
-  const authToken = request.headers.authorization;
+  
+  const authToken = request.headers.authorization;// Receber o token
 
-  // Validar se token está preenchido
-  if (!authToken) {
+  if (!authToken) {// Validar se token está preenchido
     return response.status(401).end();
   }
 
   const [, token] = authToken.split(" ");
 
-  try {
-    // Validar se token é válido
+  try {// Validar se token é válido
+    
     const { sub } = verify(
       token,
       "4f93ac9d10cb751b8c9c646bc9dbccb9"
     ) as IPayload;
 
-    // Recuperar informações do usuário
-    request.user_id = sub;
+    request.user_id = sub;// Recuperar informações do usuário
 
     return next();
   } catch (err) {

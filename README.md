@@ -182,7 +182,7 @@ Autenticação de usuário: gerar token jwt, validar usuário logado nas rotas n
 - Verificar se email existe
 - verificar se senha está correta
 - 123456 / 783645734-sdhfhsdf7762374234234
-- Gerar token: AuthenticateUserService
+- Gerar token: services/AuthenticateUserService
 - gerar o parâmetro chave secreta: md5 generator: md5 hash
 - rota /login
 
@@ -195,12 +195,19 @@ Criar a Estrutura de Compliments
 
 ### Surface Exploration
 
-- ensureAdmin
-- validar autenticação
+- middlewares/ensureAdmin.ts
+- validar autenticação: receber o token, validar se o token está preenchido, validar se o token é válido, recuperar informações do usuário
 - corrigir compliments
+- insomnia: requisição createTag: Mudado para Bearer Token para passar o nosso token de autenticação.
 
 - [x] Cadastro de elogios: id do usuário, id da tag, data da criação
 - [x] Listagem de Usuários, Listagem de tags, Listagem de elogios por usuários
+- [x] cadastrar tags com nossos administradores
+- [x] conseguir autenticar nosso usuário com jwt
+- [x] fazer cadastro de usuário 
+- [x] fazer cadastro de elogios
+- [x] listagem dos elogios do usuário logado: ListUserReceiveComplimentsService e ListUserSendComplimentsService
+- [x] List User Compliment: Service, Controller, Routas de GET para send e para receive
 
 ## 🔖 Detalhes no Notion
 
