@@ -14,10 +14,10 @@ const app = express();//@types/expres
 app.use(cors());
 
 app.get("/test", (req, res) => {
-  return res.send("Olá NLW, método GET.")
+  return res.send("Olá NLW 06 Together - Mission: Node.js, método GET.")
 })//teste
 app.post("/test-post", (req, res) => {
-  return res.send("Olá NLW, método POST")
+  return res.send("Olá NLW 06 Together - Mission: Node.js, método POST.")
 }) //teste
 
 app.use(express.json());

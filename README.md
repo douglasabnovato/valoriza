@@ -221,6 +221,7 @@ Criar a Estrutura de Compliments
 ### Avançar com Novas Funcionalidades
 - [ ] notificação via email com serviço de recebimento
 - [ ] colocar em produção em um servidor de hospedagem 
+- [ ] criar um frontend
 
 ## 🔖 Detalhes no Notion
 
