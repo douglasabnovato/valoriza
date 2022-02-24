@@ -216,10 +216,11 @@ Criar a Estrutura de Compliments
 - biblioteca para customizar dados, transformar uma classe: class-transformer: `yarn add class-transformer`
 - configurar em tag.ts com expose para name_custom
 - listagem dos usuários: ListUserService
+- adicionado e configurado o cors: `yarn add cors` e `yarn add @types/cors` 
 
 ### Avançar com Novas Funcionalidades
-- [ ] 
-- [ ] 
+- [ ] notificação via email com serviço de recebimento
+- [ ] colocar em produção em um servidor de hospedagem 
 
 ## 🔖 Detalhes no Notion
 
