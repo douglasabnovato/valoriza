@@ -16,6 +16,7 @@ Valoriza é uma plataforma para promover o reconhecimento entre companheiros de 
 <p align="center">
   <img alt="Data Model" src="./.github/requisicoes.jpg" width="450px"> 
   <img alt="Data Model" src="./.github/modelo_dados.jpg" width="450px"> 
+  <img alt="Data Model" src="./.github/beekeeper_visualizar_bd.jpg" width="450px"> 
 </p>
 
 ## ✨ Tecnologias
@@ -144,7 +145,7 @@ Tratamento de excessão
 - não usar try/catch (throw) diretamente no código
 - tratar no server.ts
 
-- [ ] Cadastro de tags (elogios possíveis): somente usuário administrador
+- [x] Cadastro de tags (elogios possíveis): somente usuário administrador
 Criar a migration de TAG
 - criado a migration: `yarn typeorm migration:create -n CreateTags`
 - criado a estrutura de tags no bd:`yarn typeorm migration:run`
@@ -212,9 +213,13 @@ Criar a Estrutura de Compliments
 - [x] listagem das tags do usuário logado: ListTagsService
 - [x] List User Tags: Service, Controller, Routas de GET tags
 - atenção mesmas rotas com métodos diferentes pode.
-- biblioteca para customizar dados, transformar uma classe: class-transform: `yarn add class-transform`
+- biblioteca para customizar dados, transformar uma classe: class-transformer: `yarn add class-transformer`
 - configurar em tag.ts com expose para name_custom
 - listagem dos usuários: ListUserService
+
+### Avançar com Novas Funcionalidades
+- [ ] 
+- [ ] 
 
 ## 🔖 Detalhes no Notion
 
