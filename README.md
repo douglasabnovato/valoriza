@@ -217,7 +217,7 @@ Criar a Estrutura de Compliments
 - listagem dos usuários: ListUserService
 - adicionado e configurado o cors: `yarn add cors` e `yarn add @types/cors` 
 
-### Avançar com Novas Funcionalidades
+### Avançar com Novas Funcionalidades - Próximos passos
 - [ ] notificação via email com serviço de recebimento
 - [ ] colocar em produção em um servidor de hospedagem 
 - [ ] criar um frontend
