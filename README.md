@@ -1,4 +1,6 @@
-<h1 align="center">Valoriza</h1>
+<h4 align="center"> 
+	🚧 Valoriza 🚀
+</h4>
 
 <p align="center">
   <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=8257E5&labelColor=000000">
@@ -10,17 +12,17 @@
   <img alt="Preview" src="./.github/preview.png">
 </p>
 
-## 💻 Projeto
+### 💻 Sobre o desafio ✨
 
 Valoriza é uma plataforma para promover o reconhecimento entre companheiros de equipe.
 
 <p align="center">
-  <img alt="Data Model" src="./.github/requisicoes.jpg" width="450px"> 
-  <img alt="Data Model" src="./.github/modelo_dados.jpg" width="450px"> 
-  <img alt="Data Model" src="./.github/beekeeper_visualizar_bd.jpg" width="450px"> 
+  <img alt="Data Model" src="./.github/requisicoes.jpg" width="400px"> 
+  <img alt="Data Model" src="./.github/modelo_dados.jpg" width="400px"> 
+  <img alt="Data Model" src="./.github/beekeeper_visualizar_bd.jpg" width="400px"> 
 </p>
 
-## ✨ Tecnologias
+#### 💻 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
@@ -37,9 +39,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Linguagem SQL
 - TypeORM
 
-## 💻 Detalhes do Projeto
+#### 💻 Detalhes do Liftoff
 
-### Liftoff
 Instalar, Configurar e Testar o typescript no projeto
 - [x] criar o projeto: `yarn init -y`: para criar o package.json
 - [x] adicionar o typescript: `yarn add typescript -D`
@@ -77,9 +78,9 @@ app.post("/test-post", (req, res) => {
 
 Construir e testar as requisições as rotas no insomnia
 - [x] rota test com método GET
-- [x] rota test-post com método POST
+- [x] rota test-post com método POST 
 
-### Maximum Speed
+#### 💻 Detalhes do Maximum Speed
 
 - [x] Cadastro de usuários
 
@@ -131,7 +132,7 @@ Cadastro de elogios
 - [x] Não é permitido cadastrar elogios para usuários inválidos
 - [x] O usuário precisa estar autenticado na aplicação
 
-### In Orbit
+#### 💻 Detalhes do In Orbit
 
 Criar e configurar a camada Services
 - CreateUserService.ts
@@ -167,7 +168,7 @@ Não é permitido o cadastro por usuários que não sejam administradores
 - criar um middleware para verificar se o usuário é o administrador: ensureAdmin.ts
 - ainda sem o token jwt, podemos colocar true ou false para o admin para testar permissão
 
-### Landing
+#### 💻 Detalhes do Landing
 
 Autenticação de usuário: gerar token jwt, validar usuário logado nas rotas necessárias
 - `yarn add jsonwebtoken`
@@ -196,7 +197,7 @@ Criar a Estrutura de Compliments
 - criar services/createComplimentsService.ts
 - criar controller/createComplimentsController.ts
 
-### Surface Exploration
+#### 💻 Detalhes do Surface Exploration
 
 - middlewares/ensureAdmin.ts
 - validar autenticação: receber o token, validar se o token está preenchido, validar se o token é válido, recuperar informações do usuário
@@ -219,16 +220,17 @@ Criar a Estrutura de Compliments
 - listagem dos usuários: ListUserService
 - adicionado e configurado o cors: `yarn add cors` e `yarn add @types/cors` 
 
-### Avançar com Novas Funcionalidades - Próximos passos
+### 🚀 Avançar com Novas Funcionalidades 
+
 - [ ] notificação via email com serviço de recebimento
 - [ ] colocar em produção em um servidor de hospedagem 
 - [ ] criar um frontend
 
-## 🔖 Detalhes no Notion
+#### 🔖 Detalhes no Notion
 
 Podemos ver mais detalhes do projeto através [desse link](https://www.notion.so/Mission-Node-js-a25b063cc195465180563951d03e2459) no Notion.  
 
-## 🚀 Como executar
+#### 🚀 Como executar
 
 - Clone o repositório
 - Rode `yarn` para baixar as dependências
@@ -237,7 +239,7 @@ Podemos ver mais detalhes do projeto através [desse link](https://www.notion.so
 
 Por fim, a aplicação estará disponível em `http://localhost:3000`
 
-## 📄 Licença
+#### 📄 Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
