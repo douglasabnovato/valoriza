@@ -238,6 +238,11 @@ Podemos ver mais detalhes do projeto através [desse link](https://www.notion.so
 - Rode o `yarn dev` para iniciar a aplicação.
 
 Por fim, a aplicação estará disponível em `http://localhost:3000`
+ 
+#### 🚀 Outras produções
+
+- [valoriza i](https://github.com/AlvesWesley/nlw-valoriza)
+- [valoriza ii](https://github.com/massenandev/nlw-valoriza)
 
 #### 📄 Licença
 
