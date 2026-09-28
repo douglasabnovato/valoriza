@@ -1,16 +1,15 @@
+/*
+ * ListUserSendComplimentsController · GET /users/compliments/send.
+ */
 import { Request, Response } from "express";
 import { ListUserSendComplimentsService } from "../services/ListUserSendComplimentsService";
 
 class ListUserSendComplimentsController {
+  /* Responde a lista em JSON. */
   async handle(request: Request, response: Response) {
-    const { user_id } = request;
-
-    const listUserSendComplimentsService = new ListUserSendComplimentsService();
-
-    const compliments = await listUserSendComplimentsService.execute(user_id);
-
-    return response.json(compliments);
+    return response.json(await new ListUserSendComplimentsService().execute(request.user_id));
   }
 }
 
 export { ListUserSendComplimentsController };
+/* fim de ListUserSendComplimentsController */

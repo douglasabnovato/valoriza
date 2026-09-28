@@ -1,3 +1,6 @@
+/*
+ * Compliment.ts · elogio de um usuário para outro, ligado a uma tag.
+ */
 import {
   Entity,
   PrimaryColumn,
@@ -42,6 +45,7 @@ class Compliment {
   @CreateDateColumn()
   created_at: Date;
 
+  /* Gera o UUID na criação da instância. */
   constructor() {
     if (!this.id) {
       this.id = uuid();
@@ -50,3 +54,4 @@ class Compliment {
 }
 
 export { Compliment };
+/* fim de Compliment.ts */

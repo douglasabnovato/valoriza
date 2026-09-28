@@ -1,5 +1,5 @@
 <h4 align="center"> 
-	🚧 Valoriza 🚀
+	Valoriza 🚀
 </h4>
 
 <p align="center">
@@ -15,6 +15,58 @@
 ### 💻 Sobre o desafio ✨
 
 Valoriza é uma plataforma para promover o reconhecimento entre companheiros de equipe.
+
+Esta API permite cadastrar colaboradores, autenticar com JWT, manter um catálogo de valores da empresa (tags, só para admins) e registrar elogios ligados a esses valores, com a consulta dos elogios enviados e recebidos.
+
+### ▶️ Como executar
+
+Pré-requisito: Node.js 20 ou superior.
+
+```bash
+npm install
+cp .env.example .env          # preencha JWT_SECRET com 32+ caracteres aleatórios
+npm run dev                   # http://localhost:3000 (migrations rodam sozinhas)
+npm test                      # 8 testes de integração com SQLite em memória
+npm run build && npm start    # produção
+npm run admin:promote -- pessoa@empresa.com   # torna um usuário admin
+```
+
+### 📡 Contrato da API
+
+Erros sempre no formato `{ "error": "mensagem" }`. Rotas com 🔒 exigem `Authorization: Bearer <token>`.
+
+| Método | Rota | Corpo | Resposta |
+|---|---|---|---|
+| GET | `/health` | — | `200 {status}` |
+| POST | `/users` | `name`, `email`, `password` (8–72) | `201 {id, name, email, admin}` — `409` se o e-mail existir |
+| POST | `/login` | `email`, `password` | `200 {token, user}` — `401` se errar |
+| GET 🔒 | `/users` | — | `200 [{id, name}]` |
+| POST 🔒 admin | `/tags` | `name` | `201 {id, name, name_custom}` — `403` sem admin, `409` duplicada |
+| GET 🔒 | `/tags` | — | `200 [{id, name, name_custom}]` |
+| POST 🔒 | `/compliments` | `tag_id`, `user_receiver`, `message` (1–500) | `201` elogio — `422` para si mesmo, `404` destinatário/tag |
+| GET 🔒 | `/users/compliments/send` | — | `200` elogios enviados |
+| GET 🔒 | `/users/compliments/receive` | — | `200` elogios recebidos |
+
+### ☁️ Hospedagem gratuita
+
+- **Em produção:** https://valoriza-api.onrender.com/health (Render, web service free, via [`render.yaml`](./render.yaml)).
+- O serviço dorme após 15 min sem acesso e leva cerca de 1 min para acordar; o SQLite fica em disco temporário e volta vazio a cada reinício.
+- O admin é criado na subida pelas variáveis `ADMIN_EMAIL` e `ADMIN_PASSWORD` (o plano free não tem Shell para `admin:promote`).
+- Passo a passo completo: [docs/DEPLOY.md](./docs/DEPLOY.md).
+
+### 📊 Estado do MVP & Documentação
+
+| Documento | Conteúdo |
+|---|---|
+| [docs/ANALISE.md](./docs/ANALISE.md) | Requisitos, diagnóstico (OWASP, LGPD, 3FN), rubrica e BDD |
+| [docs/ARQUITETURA.md](./docs/ARQUITETURA.md) | C4, modelo de dados, contrato e ADRs |
+| [docs/PLANO-DE-ACAO.md](./docs/PLANO-DE-ACAO.md) | Tarefas priorizadas por MoSCoW |
+| [docs/DEPLOY.md](./docs/DEPLOY.md) | Plano de deploy gratuito no Render |
+
+| Momento | Nota MVP | Situação |
+|---|---|---|
+| Antes (27/09/2026) | 3,52 | Reprovado — qualquer pessoa podia se cadastrar como admin, segredo do JWT no código e hash de senha nas respostas |
+| Depois (27/09/2026) | 8,30 | Aprovado |
 
 <p align="center">
   <img alt="Data Model" src="./.github/requisicoes.jpg" width="400px"> 
@@ -35,7 +87,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Express](https://expressjs.com/pt-br/)
 - [JSONWebToken](https://github.com/auth0/node-jsonwebtoken#readme)
 - Extensão: jetbrains mono
-- Postgree: banco de dados
+- SQLite: banco de dados (via TypeORM)
 - Linguagem SQL
 - TypeORM
 
@@ -223,7 +275,7 @@ Criar a Estrutura de Compliments
 ### 🚀 Avançar com Novas Funcionalidades 
 
 - [ ] notificação via email com serviço de recebimento
-- [ ] colocar em produção em um servidor de hospedagem 
+- [x] colocar em produção em hospedagem gratuita (Render, ver docs/DEPLOY.md)
 - [ ] criar um frontend
 
 #### 🔖 Detalhes no Notion
@@ -232,12 +284,7 @@ Podemos ver mais detalhes do projeto através [desse link](https://www.notion.so
 
 #### 🚀 Como executar
 
-- Clone o repositório
-- Rode `yarn` para baixar as dependências
-- Rode `yarn typeorm migration:run` para criar as tabelas do banco de dados.
-- Rode o `yarn dev` para iniciar a aplicação.
-
-Por fim, a aplicação estará disponível em `http://localhost:3000`
+Veja a seção [Como executar](#️-como-executar) no início deste README. As migrations rodam automaticamente ao subir a API.
  
 #### 🚀 Outras produções
 

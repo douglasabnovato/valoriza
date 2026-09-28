@@ -1,19 +1,17 @@
+/*
+ * AuthenticateUserController · POST /login.
+ */
 import { Request, Response } from "express";
 import { AuthenticateUserService } from "../services/AuthenticateUserService";
+import { loginSchema, parse } from "../validation/schemas";
 
 class AuthenticateUserController {
+  /* Responde { token, user }. */
   async handle(request: Request, response: Response) {
-    const { email, password } = request.body;
-
-    const authenticateUserService = new AuthenticateUserService();
-
-    const token = await authenticateUserService.execute({
-      email,
-      password,
-    });
-
-    return response.json(token);
+    const data = parse(loginSchema, request.body);
+    return response.json(await new AuthenticateUserService().execute(data));
   }
 }
 
 export { AuthenticateUserController };
+/* fim de AuthenticateUserController */

@@ -1,0 +1,31 @@
+# render.yaml · Blueprint do Render: API Valoriza como web service gratuito.
+# Banco SQLite em /tmp (disco temporário do plano free); o admin é recriado a cada subida pelas variáveis ADMIN_*.
+services:
+  - type: web
+    name: valoriza-api
+    runtime: node
+    plan: free
+    autoDeployTrigger: commit
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 1d
+      - key: DATABASE_FILE
+        value: /tmp/valoriza.sqlite
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: BCRYPT_COST
+        value: "10"
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+# fim de render.yaml

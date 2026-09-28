@@ -1,31 +1,46 @@
 {
   "name": "valoriza",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/src/server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/src/server.js",
+    "test": "node -r ts-node/register --test tests/api.test.ts",
+    "typecheck": "tsc --noEmit",
+    "admin:promote": "ts-node src/scripts/promoteAdmin.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.8",
+    "@types/node": "^20.19.43",
+    "@types/supertest": "^6.0.3",
     "@types/uuid": "^8.3.4",
-    "ts-node-dev": "^1.1.8",
-    "typescript": "^4.3.3"
+    "supertest": "^7.3.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "5.6"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "class-transformer": "^0.5.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
     "express": "^4.17.3",
     "express-async-errors": "^3.1.1",
+    "helmet": "^8.3.0",
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",
-    "typeorm": "^0.2.43",
-    "uuid": "^8.3.2"
+    "typeorm": "^0.2.45",
+    "uuid": "^8.3.2",
+    "zod": "^3.25.76"
+  },
+  "description": "API de reconhecimento entre colegas: elogios ligados aos valores (tags) da empresa.",
+  "engines": {
+    "node": ">=20"
   }
 }

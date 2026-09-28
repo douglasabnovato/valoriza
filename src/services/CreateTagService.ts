@@ -1,31 +1,36 @@
+/*
+ * CreateTagService · cadastra tag com nome único (RN03).
+ */
 import { getCustomRepository } from "typeorm";
 import { TagsRepositories } from "../repositories/TagsRepositories";
+import { AppError } from "../errors/AppError";
+import { publicTag } from "../mappers/toPublic";
 
 class CreateTagService {
+  /* Cria a tag; o índice único (NOCASE) cobre a corrida entre dois cadastros. */
   async execute(name: string) {
     const tagsRepositories = getCustomRepository(TagsRepositories);
 
-    if (!name) {
-      throw new Error("Incorrect name!");
+    const existing = await tagsRepositories
+      .createQueryBuilder("tag")
+      .where("lower(tag.name) = lower(:name)", { name })
+      .getOne();
+    if (existing) {
+      throw new AppError("Esta tag já existe.", 409);
     }
 
-    // SELECT * FROM TAGS WHERE NAME = 'name'
-    const tagAlreadyExists = await tagsRepositories.findOne({
-      name,
-    });
-
-    if (tagAlreadyExists) {
-      throw new Error("Tag already exists!");
+    const tag = tagsRepositories.create({ name });
+    try {
+      await tagsRepositories.save(tag);
+    } catch (error) {
+      if (String((error as Error).message).includes("UNIQUE")) {
+        throw new AppError("Esta tag já existe.", 409);
+      }
+      throw error;
     }
-
-    const tag = tagsRepositories.create({
-      name,
-    });
-
-    await tagsRepositories.save(tag);
-
-    return tag;
+    return publicTag(tag);
   }
 }
 
 export { CreateTagService };
+/* fim de CreateTagService */

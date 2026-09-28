@@ -1,13 +1,7 @@
-import {
-  Entity,
-  PrimaryColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from "typeorm";
-
-import { Expose } from "class-transformer";
-
+/*
+ * Tag.ts · valor da empresa usado para classificar um elogio.
+ */
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 
 @Entity("tags")
@@ -24,11 +18,7 @@ class Tag {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @Expose({ name: "name_custom" })
-  nameCustom(): string {
-    return `#${this.name}`;
-  }
-
+  /* Gera o UUID na criação da instância. */
   constructor() {
     if (!this.id) {
       this.id = uuid();
@@ -37,3 +27,4 @@ class Tag {
 }
 
 export { Tag };
+/* fim de Tag.ts */

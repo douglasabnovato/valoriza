@@ -1,14 +1,15 @@
+/*
+ * ListTagsController · GET /tags.
+ */
 import { Request, Response } from "express";
 import { ListTagsService } from "../services/ListTagsService";
 
 class ListTagsController {
+  /* Responde a lista em JSON. */
   async handle(request: Request, response: Response) {
-    const listTagsService = new ListTagsService();
-
-    const tags = await listTagsService.execute();
-
-    return response.json(tags);
+    return response.json(await new ListTagsService().execute());
   }
 }
 
 export { ListTagsController };
+/* fim de ListTagsController */

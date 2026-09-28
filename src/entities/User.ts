@@ -1,11 +1,7 @@
-import {
-  Entity,
-  PrimaryColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from "typeorm";
-import { Exclude } from "class-transformer";
+/*
+ * User.ts · colaborador; a senha é sempre armazenada como hash bcrypt e nunca sai nas respostas.
+ */
+import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 
 @Entity("users")
@@ -22,8 +18,7 @@ class User {
   @Column()
   admin: boolean;
 
-  @Exclude()
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @CreateDateColumn()
@@ -32,6 +27,7 @@ class User {
   @UpdateDateColumn()
   updated_at: Date;
 
+  /* Gera o UUID na criação da instância. */
   constructor() {
     if (!this.id) {
       this.id = uuid();
@@ -40,3 +36,4 @@ class User {
 }
 
 export { User };
+/* fim de User.ts */

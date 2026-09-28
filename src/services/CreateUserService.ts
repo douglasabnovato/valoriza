@@ -1,45 +1,47 @@
+/*
+ * CreateUserService · cadastra colaborador (RN01, RN02, RN06): e-mail único, senha com hash, nunca admin.
+ */
 import { getCustomRepository } from "typeorm";
-import { UsersRepositories } from "../repositories/UsersRepositories";
 import { hash } from "bcryptjs";
+import { UsersRepositories } from "../repositories/UsersRepositories";
+import { AppError } from "../errors/AppError";
+import { config } from "../config";
+import { selfUser } from "../mappers/toPublic";
 
 interface IUserRequest {
   name: string;
   email: string;
-  admin?: boolean;
   password: string;
 }
 
 class CreateUserService {
-  async execute({ name, email, admin = false, password }: IUserRequest) {
+  /* Cria o usuário; o índice único do banco resolve a corrida entre dois cadastros iguais. */
+  async execute({ name, email, password }: IUserRequest) {
     const usersRepository = getCustomRepository(UsersRepositories);
 
-    console.log("Email and name: ", email, name);
-
-    if (!email) {
-      throw new Error("Email incorrect");
+    if (await usersRepository.findOne({ email })) {
+      throw new AppError("Já existe um usuário com este e-mail.", 409);
     }
-
-    const userAlreadyExists = await usersRepository.findOne({
-      email,
-    });
-
-    if (userAlreadyExists) {
-      throw new Error("User already exists");
-    }
-
-    const passwordHash = await hash(password, 8);
 
     const user = usersRepository.create({
       name,
       email,
-      admin,
-      password: passwordHash,
+      admin: false,
+      password: await hash(password, config.bcryptCost),
     });
 
-    await usersRepository.save(user);
+    try {
+      await usersRepository.save(user);
+    } catch (error) {
+      if (String((error as Error).message).includes("UNIQUE")) {
+        throw new AppError("Já existe um usuário com este e-mail.", 409);
+      }
+      throw error;
+    }
 
-    return user;
+    return selfUser(user);
   }
 }
 
 export { CreateUserService };
+/* fim de CreateUserService */

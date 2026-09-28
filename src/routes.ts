@@ -1,3 +1,6 @@
+/*
+ * routes.ts · rotas da API; tags, elogios e usuários exigem JWT; criar tag exige admin.
+ */
 import { Router } from "express";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { CreateTagController } from "./controllers/CreateTagController";
@@ -56,3 +59,4 @@ router.get(
 router.get("/users", ensureAuthenticated, listUsersController.handle);
 
 export { router };
+/* fim de routes.ts */
