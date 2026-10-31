@@ -1,4 +1,4 @@
-> **Projeto de estudo.** Estado conferido em 30/10/2026: 1 endereço(s) citado(s) abaixo não responde(m). Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
+> **Projeto de estudo.** Estado conferido em 31/10/2026: os endereços que seguem fora do ar foram retirados deste README. Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
 
 <h4 align="center"> 
 	Valoriza 🚀
@@ -51,7 +51,7 @@ Erros sempre no formato `{ "error": "mensagem" }`. Rotas com 🔒 exigem `Author
 
 ### ☁️ Hospedagem gratuita
 
-- **Em produção:** https://valoriza-api.onrender.com/health (Render, web service free, via [`render.yaml`](./render.yaml)).
+- **Publicação:** Fora do ar desde a conferência de 31/10/2026; para ver o projeto, rode localmente (seção "Como executar").
 - O serviço dorme após 15 min sem acesso e leva cerca de 1 min para acordar; o SQLite fica em disco temporário e volta vazio a cada reinício.
 - O admin é criado na subida pelas variáveis `ADMIN_EMAIL` e `ADMIN_PASSWORD` (o plano free não tem Shell para `admin:promote`).
 - Passo a passo completo: [docs/DEPLOY.md](./docs/DEPLOY.md).
