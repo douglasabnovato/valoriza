@@ -14,6 +14,15 @@
   <img alt="Preview" src="./.github/preview.png">
 </p>
 
+## 🧠 O que aprendi
+
+> Proposta de 01/11/2026, escrita a partir do código e das dependências. Ajuste com a sua experiência.
+
+- Construir uma API em TypeScript com Express e TypeORM.
+- Autenticar com JWT e guardar senhas com `bcryptjs`.
+- Validar entradas com Zod e centralizar erros com `express-async-errors`.
+- Separar o build (`tsc`) da execução em desenvolvimento (`ts-node-dev`).
+
 ### 💻 Sobre o desafio ✨
 
 Valoriza é uma plataforma para promover o reconhecimento entre companheiros de equipe.
