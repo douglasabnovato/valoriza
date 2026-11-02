@@ -1,7 +1,6 @@
 /*
  * CreateUserService · cadastra colaborador (RN01, RN02, RN06): e-mail único, senha com hash, nunca admin.
  */
-import { getCustomRepository } from "typeorm";
 import { hash } from "bcryptjs";
 import { UsersRepositories } from "../repositories/UsersRepositories";
 import { AppError } from "../errors/AppError";
@@ -17,9 +16,9 @@ interface IUserRequest {
 class CreateUserService {
   /* Cria o usuário; o índice único do banco resolve a corrida entre dois cadastros iguais. */
   async execute({ name, email, password }: IUserRequest) {
-    const usersRepository = getCustomRepository(UsersRepositories);
+    const usersRepository = UsersRepositories();
 
-    if (await usersRepository.findOne({ email })) {
+    if (await usersRepository.findOneBy({ email })) {
       throw new AppError("Já existe um usuário com este e-mail.", 409);
     }
 

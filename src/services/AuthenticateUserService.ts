@@ -1,7 +1,6 @@
 /*
  * AuthenticateUserService · confere e-mail e senha e emite o JWT assinado com o segredo do ambiente.
  */
-import { getCustomRepository } from "typeorm";
 import { compare, hashSync } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { UsersRepositories } from "../repositories/UsersRepositories";
@@ -19,7 +18,7 @@ const DUMMY_HASH = hashSync("usuario-inexistente", config.bcryptCost);
 class AuthenticateUserService {
   /* Autentica com mensagem única para e-mail ou senha errados (não revela quais e-mails existem). */
   async execute({ email, password }: IAuthenticateRequest) {
-    const usersRepositories = getCustomRepository(UsersRepositories);
+    const usersRepositories = UsersRepositories();
     const user = await usersRepositories
       .createQueryBuilder("user")
       .addSelect("user.password")
