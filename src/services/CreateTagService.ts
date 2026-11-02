@@ -1,7 +1,6 @@
 /*
  * CreateTagService · cadastra tag com nome único (RN03).
  */
-import { getCustomRepository } from "typeorm";
 import { TagsRepositories } from "../repositories/TagsRepositories";
 import { AppError } from "../errors/AppError";
 import { publicTag } from "../mappers/toPublic";
@@ -9,7 +8,7 @@ import { publicTag } from "../mappers/toPublic";
 class CreateTagService {
   /* Cria a tag; o índice único (NOCASE) cobre a corrida entre dois cadastros. */
   async execute(name: string) {
-    const tagsRepositories = getCustomRepository(TagsRepositories);
+    const tagsRepositories = TagsRepositories();
 
     const existing = await tagsRepositories
       .createQueryBuilder("tag")

@@ -1,7 +1,6 @@
 /*
  * CreateComplimentService · registra elogio (RN04): não para si, destinatário e tag existentes.
  */
-import { getCustomRepository } from "typeorm";
 import { ComplimentsRepositories } from "../repositories/ComplimentsRepositories";
 import { UsersRepositories } from "../repositories/UsersRepositories";
 import { TagsRepositories } from "../repositories/TagsRepositories";
@@ -23,13 +22,13 @@ class CreateComplimentService {
     }
 
     const [receiver, tag] = await Promise.all([
-      getCustomRepository(UsersRepositories).findOne(user_receiver),
-      getCustomRepository(TagsRepositories).findOne(tag_id),
+      UsersRepositories().findOneBy({ id: user_receiver }),
+      TagsRepositories().findOneBy({ id: tag_id }),
     ]);
     if (!receiver) throw new AppError("Destinatário não encontrado.", 404);
     if (!tag) throw new AppError("Tag não encontrada.", 404);
 
-    const complimentsRepositories = getCustomRepository(ComplimentsRepositories);
+    const complimentsRepositories = ComplimentsRepositories();
     const compliment = complimentsRepositories.create({ tag_id, user_receiver, user_sender, message });
     await complimentsRepositories.save(compliment);
 

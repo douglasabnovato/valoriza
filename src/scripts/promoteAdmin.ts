@@ -3,7 +3,6 @@
  * Uso: npm run admin:promote -- pessoa@empresa.com
  */
 import "reflect-metadata";
-import { getCustomRepository } from "typeorm";
 import { createDatabaseConnection } from "../database";
 import { UsersRepositories } from "../repositories/UsersRepositories";
 
@@ -12,12 +11,12 @@ async function main() {
   const email = String(process.argv[2] ?? "").trim().toLowerCase();
   if (!email) throw new Error("Informe o e-mail: npm run admin:promote -- pessoa@empresa.com");
   const connection = await createDatabaseConnection();
-  const repository = getCustomRepository(UsersRepositories);
-  const user = await repository.findOne({ email });
+  const repository = UsersRepositories();
+  const user = await repository.findOneBy({ email });
   if (!user) throw new Error(`Nenhum usuário com o e-mail ${email}.`);
   await repository.update(user.id, { admin: true });
   console.log(`${user.name} agora é admin.`);
-  await connection.close();
+  await connection.destroy();
 }
 
 main().catch((error) => {

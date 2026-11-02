@@ -2,7 +2,6 @@
  * seedAdmin.ts · garante um admin na subida quando ADMIN_EMAIL e ADMIN_PASSWORD existem no ambiente.
  * Motivo: no plano gratuito do Render não há Shell para rodar admin:promote e o disco é apagado a cada reinício.
  */
-import { getCustomRepository } from "typeorm";
 import { hash } from "bcryptjs";
 import { UsersRepositories } from "../repositories/UsersRepositories";
 import { config } from "../config";
@@ -11,9 +10,9 @@ import { config } from "../config";
 export async function seedAdmin(email = config.adminEmail, password = config.adminPassword): Promise<"criado" | "promovido" | "ignorado"> {
   if (!email || !password) return "ignorado";
   if (password.length < 8) throw new Error("ADMIN_PASSWORD precisa de no mínimo 8 caracteres.");
-  const repository = getCustomRepository(UsersRepositories);
+  const repository = UsersRepositories();
   const normalized = email.trim().toLowerCase();
-  const existing = await repository.findOne({ email: normalized });
+  const existing = await repository.findOneBy({ email: normalized });
   if (existing) {
     await repository.update(existing.id, { admin: true });
     return "promovido";
