@@ -10,12 +10,12 @@ import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import request from "supertest";
 import { sign } from "jsonwebtoken";
-import { Connection } from "typeorm";
+import { DataSource } from "typeorm";
 import { createDatabaseConnection } from "../src/database";
 import { createApp } from "../src/app";
 import { seedAdmin } from "../src/database/seedAdmin";
 
-let connection: Connection;
+let connection: DataSource;
 const app = createApp();
 
 /* Cadastra e autentica um usuário, devolvendo token e id. */
@@ -32,7 +32,7 @@ before(async () => {
 });
 
 after(async () => {
-  await connection.close();
+  await connection.destroy();
 });
 
 test("cadastro ignora admin:true e não devolve a senha", async () => {

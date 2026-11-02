@@ -1,7 +1,6 @@
-import { EntityRepository, Repository } from "typeorm";
+import { getDataSource } from "../database";
 import { Tag } from "../entities/Tag";
 
-@EntityRepository(Tag)
-class TagsRepositories extends Repository<Tag> {}
+const TagsRepositories = () => getDataSource().getRepository(Tag);
 
 export { TagsRepositories };

@@ -14,7 +14,7 @@
 | 6 | Falhas tratadas | Erro, vazio e carregamento têm resposta clara | Atende: Coberto pelos testes de API; há `AppError` e validação por schema. |
 | 7 | Desempenho aceitável | LCP de até 2,5 s no celular | Não medido: Sem publicação verificada neste ciclo. |
 | 8 | Acessibilidade básica | axe e teclado | Não se aplica: Projeto sem interface. |
-| 9 | Segurança e conformidade | Riscos decididos | Parcial: Restam 2 alertas críticos e 6 altos; `database.sqlite` segue versionado; não conferi o conteúdo. |
+| 9 | Segurança e conformidade | Riscos decididos | Parcial: resta 1 alerta moderado (`uuid`). O banco com 9 usuários saiu do Git em 02/11/2026, mas segue no histórico. |
 | 10 | Entrega confiável | CI verde antes de entrar na principal | Atende: CI verde no PR deste ciclo; a principal segue sem proteção. |
 | 11 | Testes dos fluxos críticos | Testes automatizados no CI | Atende: Testes automatizados rodam no CI. |
 | 12 | Documentação honesta | O README ensina a rodar | Atende: Comandos conferidos com o `package.json`; aviso de estudo no README. |
