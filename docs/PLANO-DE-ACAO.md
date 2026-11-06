@@ -24,3 +24,52 @@ Priorização por **MoSCoW** e ordenação por **ganho ÷ esforço** (esforço: 
 - `npm test` (8/8), `npm run typecheck` e `npm run build` sem erros.
 - Migration aplicada numa cópia do banco atual sem perda de registros válidos.
 - `grep -rn "4f93ac9d" src` sem resultados.
+
+## Ciclo de 03/11/2026
+
+Executado em 06/11/2026, nas branches `feature/2026-11-06` → `developer/sprint-2026-11-12` → `main`.
+
+### Produto
+
+**Problema e público.** Equipes querem reconhecer colegas ligando cada elogio a um valor da empresa. Esta API é a base desse registro.
+
+**Hipótese e meta (proposta).** Praticar Node e TypeScript: autenticar e registrar um elogio pela API.
+
+**O que a pesquisa trouxe.**
+
+| Ideia | Fonte | Uso aqui |
+|---|---|---|
+| Ligar cada reconhecimento a um valor declarado torna o valor concreto; marcar o valor no elogio ajuda | [ChangeEngine](https://changeengine.com/glossary/what-is-peer-to-peer-recognition); [Business 2 Community](https://business2community.com/?p=2349556) | A tag já é o valor; o resumo mostra quantos elogios a pessoa recebeu em cada um |
+| Reconhecimento frequente e específico funciona melhor que eventos raros | [Advantage Club](https://blog.advantageclub.co/2024/12/23/best-practices-for-peer-to-peer-recognition/); [Process Street](https://www.process.st/peer-to-peer-recognition/) | Paginação (#13) e limite de repetição (#14) preparam a API para uso frequente |
+
+As fontes são, na maioria, de empresas que vendem software de reconhecimento; os ganhos que elas citam não foram verificados.
+
+**Backlog priorizado (impacto × esforço).**
+
+| Item | Impacto | Esforço | Destino |
+|---|---|---|---|
+| Remover rascunhos com e-mail pessoal | Alto | Baixo | Este ciclo |
+| Trocar `uuid` por `crypto.randomUUID` | Médio | Baixo | Este ciclo |
+| Resumo de elogios por valor | Médio | Baixo | Este ciclo |
+| Paginação | Médio | Médio | [#13](https://github.com/douglasabnovato/valoriza/issues/13) |
+| Limite de elogios repetidos | Médio | Baixo | [#14](https://github.com/douglasabnovato/valoriza/issues/14) |
+| OpenAPI | Médio | Médio | [#15](https://github.com/douglasabnovato/valoriza/issues/15) |
+| Histórico, proteção da `main`, publicação | Alto | Baixo (responsável) | [#11](https://github.com/douglasabnovato/valoriza/issues/11), [#12](https://github.com/douglasabnovato/valoriza/issues/12), [#16](https://github.com/douglasabnovato/valoriza/issues/16) |
+
+**Fora do escopo.** Interface web e notificações.
+
+### Engenharia
+
+**Arquitetura.** API Express + TypeScript, TypeORM com SQLite, JWT e bcryptjs, validação com Zod. Camadas: rotas → controllers → services → repositórios. Testes de integração com `node:test` e supertest em SQLite em memória.
+
+**Riscos.** Banco antigo com 9 usuários no histórico do Git (#11). Principal sem proteção (#12).
+
+**Qualidade.** 11 testes, `tsc --noEmit`, build no CI. Sem alertas no `npm audit --omit=dev`.
+
+**Definição de pronto.** CI verde, teste novo, `MVP.md` e README atualizados.
+
+### Plano de ação
+
+**Executado neste ciclo.** Remoção dos rascunhos `testtypescript.*`; troca do `uuid`; rota de resumo por valor; gatilho do CI para `developer/**`; régua N1 e critério 10 no `MVP.md`; seção de estado no README.
+
+**Vira issue.** #11 a #16.
