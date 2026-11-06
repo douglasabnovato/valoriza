@@ -2,7 +2,7 @@
  * Tag.ts · valor da empresa usado para classificar um elogio.
  */
 import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { v4 as uuid } from "uuid";
+import { randomUUID as uuid } from "crypto";
 
 @Entity("tags")
 class Tag {

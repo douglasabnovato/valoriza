@@ -14,6 +14,7 @@ import { DataSource } from "typeorm";
 import { createDatabaseConnection } from "../src/database";
 import { createApp } from "../src/app";
 import { seedAdmin } from "../src/database/seedAdmin";
+import { resumirPorTag } from "../src/services/SummaryUserComplimentsService";
 
 let connection: DataSource;
 const app = createApp();
@@ -115,6 +116,37 @@ test("elogio completo: regras de negócio e listagens sem dados sensíveis", asy
 
   const users = await request(app).get("/users").set(auth);
   assert.ok(users.body.every((user: object) => Object.keys(user).sort().join() === "id,name"));
+});
+
+test("resumo dos elogios recebidos por valor, do maior para o menor", async () => {
+  const admin = await signUp("Lia", "lia@empresa.com");
+  await connection.query(`UPDATE users SET admin = 1 WHERE id = ?`, [admin.id]);
+  const auth = { Authorization: `Bearer ${admin.token}` };
+  const foco = await request(app).post("/tags").set(auth).send({ name: "Foco" });
+  const cuidado = await request(app).post("/tags").set(auth).send({ name: "Cuidado" });
+  const receiver = await signUp("Téo", "teo@empresa.com");
+  const vazio = await request(app).get("/users/compliments/summary").set("Authorization", `Bearer ${receiver.token}`);
+  assert.deepEqual(vazio.body, { total: 0, tags: [] });
+  for (const tag of [cuidado, foco, foco]) {
+    const r = await request(app).post("/compliments").set(auth).send({ tag_id: tag.body.id, user_receiver: receiver.id, message: "Valeu!" });
+    assert.equal(r.status, 201);
+  }
+  const resumo = await request(app).get("/users/compliments/summary").set("Authorization", `Bearer ${receiver.token}`);
+  assert.equal(resumo.status, 200);
+  assert.equal(resumo.body.total, 3);
+  assert.deepEqual(resumo.body.tags.map((t: { tag: string; total: number }) => [t.tag, t.total]), [["Foco", 2], ["Cuidado", 1]]);
+  assert.equal((await request(app).get("/users/compliments/summary")).status, 401);
+});
+
+test("resumirPorTag desempata pelo nome, em qualquer ordem de entrada", () => {
+  const lista = [
+    { tag_id: "b", tag: { name: "Bravura" } },
+    { tag_id: "a", tag: { name: "Agilidade" } },
+  ];
+  const esperado = [["Agilidade", 1], ["Bravura", 1]];
+  assert.deepEqual(resumirPorTag(lista).map((t) => [t.tag, t.total]), esperado);
+  assert.deepEqual(resumirPorTag([...lista].reverse()).map((t) => [t.tag, t.total]), esperado);
+  assert.deepEqual(resumirPorTag([]), []);
 });
 
 test("rotas protegidas sem token respondem 401 e rota inexistente 404", async () => {

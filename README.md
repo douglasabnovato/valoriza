@@ -1,4 +1,30 @@
-> **Projeto de estudo.** Estado conferido em 31/10/2026: os endereços que seguem fora do ar foram retirados deste README. Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
+> **Projeto de estudo (N1).** Estado conferido em 06/11/2026. API sem publicação no ar: rode localmente (seção "Como executar"). Critérios em [docs/MVP.md](docs/MVP.md).
+
+## Estado e próximos passos (ciclo de 03/11/2026)
+
+Sem link publicado: o endereço antigo estava fora do ar em 31/10/2026, e a decisão de publicar está em [#16](https://github.com/douglasabnovato/valoriza/issues/16).
+
+**O que foi feito**
+
+- Admin não se autoconcede, segredo do JWT fora do código e senha fora das respostas (PR #6, #7).
+- TypeORM atual, JWT atualizado e banco SQLite fora do Git (PR #9, #10).
+- Rascunhos `testtypescript.*` com e-mail pessoal removidos, e pacote `uuid` trocado pelo `crypto.randomUUID` do Node: `npm audit --omit=dev` sem alertas (PR #17).
+- Rota nova `GET /users/compliments/summary`: elogios recebidos por valor, com testes (PR #17).
+- CI passa a rodar também nos PRs para `developer/**` (PR #17).
+
+**O que queremos fazer**
+
+- [#11](https://github.com/douglasabnovato/valoriza/issues/11) Decidir o que fazer com o banco de 9 usuários que segue no histórico (responsável).
+- [#12](https://github.com/douglasabnovato/valoriza/issues/12) Proteger a `main` com PR e CI obrigatórios (responsável).
+- [#13](https://github.com/douglasabnovato/valoriza/issues/13) Paginar as listagens de elogios.
+- [#14](https://github.com/douglasabnovato/valoriza/issues/14) Limitar elogios repetidos para a mesma pessoa e o mesmo valor.
+- [#15](https://github.com/douglasabnovato/valoriza/issues/15) Documentar a API em OpenAPI.
+- [#16](https://github.com/douglasabnovato/valoriza/issues/16) Decidir a publicação da API no Render (responsável).
+
+**Onde está a documentação**
+
+- [docs/MVP.md](docs/MVP.md): estado de cada critério, com evidência e data.
+- [docs/PLANO-DE-ACAO.md](docs/PLANO-DE-ACAO.md): plano do ciclo, pesquisa e backlog.
 
 <h4 align="center"> 
 	Valoriza 🚀
@@ -37,7 +63,7 @@ Pré-requisito: Node.js 20 ou superior.
 npm install
 cp .env.example .env          # preencha JWT_SECRET com 32+ caracteres aleatórios
 npm run dev                   # http://localhost:3000 (migrations rodam sozinhas)
-npm test                      # 8 testes de integração com SQLite em memória
+npm test                      # 11 testes de integração com SQLite em memória
 npm run build && npm start    # produção
 npm run admin:promote -- pessoa@empresa.com   # torna um usuário admin
 ```
@@ -57,6 +83,7 @@ Erros sempre no formato `{ "error": "mensagem" }`. Rotas com 🔒 exigem `Author
 | POST 🔒 | `/compliments` | `tag_id`, `user_receiver`, `message` (1–500) | `201` elogio — `422` para si mesmo, `404` destinatário/tag |
 | GET 🔒 | `/users/compliments/send` | — | `200` elogios enviados |
 | GET 🔒 | `/users/compliments/receive` | — | `200` elogios recebidos |
+| GET 🔒 | `/users/compliments/summary` | — | `200 {total, tags: [{tag_id, tag, total}]}` — elogios recebidos por valor, do maior para o menor |
 
 ### ☁️ Hospedagem gratuita
 
@@ -107,7 +134,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 Instalar, Configurar e Testar o typescript no projeto
 - [x] criar o projeto: `yarn init -y`: para criar o package.json
 - [x] adicionar o typescript: `yarn add typescript -D`
-- [x] executar no node: `node testtypescript.ts`
+- [x] executar no node: `node testtypescript.ts` (rascunho removido do repositório em 06/11/2026)
 - [x] inicializar o typescript: `yarn tsc --init` 
 - [x] converter o typescript: `yarn tsc` então cria o `testtypescript.js` 
 - [x] executar no node: `node testtypescript.js`
