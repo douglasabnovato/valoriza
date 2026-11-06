@@ -2,7 +2,7 @@
  * User.ts · colaborador; a senha é sempre armazenada como hash bcrypt e nunca sai nas respostas.
  */
 import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { v4 as uuid } from "uuid";
+import { randomUUID as uuid } from "crypto";
 
 @Entity("users")
 class User {
