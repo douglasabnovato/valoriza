@@ -25,6 +25,21 @@ Priorização por **MoSCoW** e ordenação por **ganho ÷ esforço** (esforço: 
 - Migration aplicada numa cópia do banco atual sem perda de registros válidos.
 - `grep -rn "4f93ac9d" src` sem resultados.
 
+## Ciclo de 10/11/2026 (faixa de 90%)
+
+> Branch `feature/2026-11-10-b` → `developer/sprint-2026-11-12` → `main` (o PR para a `main` fica com o responsável). Decisões D1 a D7 em `engenharia/decisoes/2026-11-10-ciclo-faixa-90.md`.
+
+**Produto.** Sem mudança. A aposta da seção 2 do `MVP.md` passa a ser a meta do ciclo (D1).
+
+**Engenharia.** Pela D4, o banco antigo no histórico foi conferido sem imprimir valores. Há e-mails de provedor comum sem sinal de teste, então não cabe ADR de risco aceito: limpar ou não o histórico é do responsável (#11).
+
+| Item | Destino |
+|---|---|
+| Conferir o banco do histórico (D4) | Este ciclo: inconclusivo, vai para o responsável |
+| Critérios 2 e 10 pelas decisões D1 e D3 | Este ciclo |
+| Decidir o histórico | Responsável (#11) |
+| Publicar a API | Responsável (#16) |
+
 ## Ciclo de 03/11/2026
 
 Executado em 06/11/2026, nas branches `feature/2026-11-06` → `developer/sprint-2026-11-12` → `main`.

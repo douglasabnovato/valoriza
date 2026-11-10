@@ -1,19 +1,19 @@
-> **Projeto de estudo (N1).** Estado conferido em 06/11/2026. API sem publicação no ar: rode localmente (seção "Como executar"). Critérios em [docs/MVP.md](docs/MVP.md).
+> **Projeto de estudo (N1).** Estado conferido em 10/11/2026. API sem publicação no ar: rode localmente (seção "Como executar"). Critérios em [docs/MVP.md](docs/MVP.md).
 
-## Estado e próximos passos (ciclo de 03/11/2026)
+## Estado e próximos passos (ciclo da faixa de 90%, 10/11/2026)
 
 Sem link publicado: o endereço antigo estava fora do ar em 31/10/2026, e a decisão de publicar está em [#16](https://github.com/douglasabnovato/valoriza/issues/16).
 
-Critérios do MVP (N1): 8 de 9 aplicáveis atendidos em 10/11/2026, Finalizado: sim ([docs/MVP.md](docs/MVP.md)). A `main` está protegida desde 10/11/2026: só recebe mudanças por PR.
+Critérios do MVP (N1): 8 de 9 aplicáveis atendidos em 10/11/2026, Finalizado: sim ([docs/MVP.md](docs/MVP.md)). A `main` exige PR e o job `raiz` do CI verde.
 
 **O que foi feito**
 
-- `main` protegida pelo ruleset `principal-protegida`; critério 10 atende (10/11/2026).
+- 10/11/2026: conferência do banco antigo que segue no histórico, sem imprimir valores: há e-mails que podem ser reais, então a decisão fica com o responsável (#11). Critérios 2 e 10 revistos pelas decisões D1 e D3.
+- `main` protegida pelo ruleset `principal-protegida` (10/11/2026).
 - Admin não se autoconcede, segredo do JWT fora do código e senha fora das respostas (PR #6, #7).
 - TypeORM atual, JWT atualizado e banco SQLite fora do Git (PR #9, #10).
 - Rascunhos `testtypescript.*` com e-mail pessoal removidos, e pacote `uuid` trocado pelo `crypto.randomUUID` do Node: `npm audit --omit=dev` sem alertas (PR #17).
 - Rota nova `GET /users/compliments/summary`: elogios recebidos por valor, com testes (PR #17).
-- CI passa a rodar também nos PRs para `developer/**` (PR #17).
 
 **O que queremos fazer**
 
