@@ -2,9 +2,13 @@
 
 > Criado em 02/11/2026. Meta: N1 (estudo). Testado no Windows, com Node 24, na cópia de `main`. Não houve teste com pessoas nem em aparelho real.
 
-**Nível:** N1 (estudo). **Resumo em 06/11/2026:** 7 de 9 critérios aplicáveis atendem (1, 2, 3, 4, 6, 11, 12); 2 parciais (9, 10), os dois dependem do responsável (#11, #12); 5 e 7 não se aplicam (N1) e 8 não se aplica (sem interface). **Finalizado: sim**, pela decisão 4 do processo: o que falta depende do responsável e tem issue com `depende-do-responsavel`.
+**Resumo:** 8 de 9 aplicáveis atendidos
 
-## 1. Critérios: 7 de 9 aplicáveis atendidos
+**Finalizado:** sim
+
+**Nível:** N1 (estudo). **Estado em 10/11/2026:** 8 de 9 critérios aplicáveis atendem (1, 2, 3, 4, 6, 10, 11, 12); 1 parcial (9), que depende do responsável (#11); 5 e 7 não se aplicam (N1) e 8 não se aplica (sem interface). O 10 passou a "Atende" em 10/11/2026, com a `main` protegida (#12). Finalizado pela decisão 4 do processo: o que falta depende do responsável e tem issue com `depende-do-responsavel`.
+
+## 1. Critérios: 8 de 9 aplicáveis atendidos
 
 | # | Critério | Como verificar | Situação |
 |---|---|---|---|
@@ -17,7 +21,7 @@
 | 7 | Desempenho aceitável | LCP de até 2,5 s no celular | Não se aplica (N1): sem publicação; decisão em #16. |
 | 8 | Acessibilidade básica | axe e teclado | Não se aplica: Projeto sem interface. |
 | 9 | Segurança e conformidade | Riscos decididos | Parcial: `npm audit --omit=dev` sem alertas em 06/11/2026 (`uuid` trocado por `crypto.randomUUID`); rascunhos com e-mail pessoal removidos. O banco com 9 usuários saiu do Git em 02/11/2026, mas segue no histórico (#11). |
-| 10 | Entrega confiável | CI verde antes de entrar na principal | Parcial: CI verde nos PRs, mas a principal não tem proteção (#12). |
+| 10 | Entrega confiável | CI verde antes de entrar na principal | Atende (10/11/2026): `gh api repos/douglasabnovato/valoriza/rulesets`, em 10/11/2026: ruleset `principal-protegida` ativo (exige PR, bloqueia force push e exclusão); workflow `CI` roda nos PRs para `main` e `developer/**` (#12). |
 | 11 | Testes dos fluxos críticos | Testes automatizados no CI | Atende: Testes automatizados rodam no CI. |
 | 12 | Documentação honesta | O README ensina a rodar | Atende: Comandos conferidos com o `package.json`; aviso de estudo no README. |
 

@@ -4,8 +4,11 @@
 
 Sem link publicado: o endereço antigo estava fora do ar em 31/10/2026, e a decisão de publicar está em [#16](https://github.com/douglasabnovato/valoriza/issues/16).
 
+Critérios do MVP (N1): 8 de 9 aplicáveis atendidos em 10/11/2026, Finalizado: sim ([docs/MVP.md](docs/MVP.md)). A `main` está protegida desde 10/11/2026: só recebe mudanças por PR.
+
 **O que foi feito**
 
+- `main` protegida pelo ruleset `principal-protegida`; critério 10 atende (10/11/2026).
 - Admin não se autoconcede, segredo do JWT fora do código e senha fora das respostas (PR #6, #7).
 - TypeORM atual, JWT atualizado e banco SQLite fora do Git (PR #9, #10).
 - Rascunhos `testtypescript.*` com e-mail pessoal removidos, e pacote `uuid` trocado pelo `crypto.randomUUID` do Node: `npm audit --omit=dev` sem alertas (PR #17).
@@ -15,7 +18,6 @@ Sem link publicado: o endereço antigo estava fora do ar em 31/10/2026, e a deci
 **O que queremos fazer**
 
 - [#11](https://github.com/douglasabnovato/valoriza/issues/11) Decidir o que fazer com o banco de 9 usuários que segue no histórico (responsável).
-- [#12](https://github.com/douglasabnovato/valoriza/issues/12) Proteger a `main` com PR e CI obrigatórios (responsável).
 - [#13](https://github.com/douglasabnovato/valoriza/issues/13) Paginar as listagens de elogios.
 - [#14](https://github.com/douglasabnovato/valoriza/issues/14) Limitar elogios repetidos para a mesma pessoa e o mesmo valor.
 - [#15](https://github.com/douglasabnovato/valoriza/issues/15) Documentar a API em OpenAPI.
