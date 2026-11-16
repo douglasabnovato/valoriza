@@ -4,7 +4,7 @@
 
 Sem link publicado: o endereço antigo estava fora do ar em 31/10/2026, e a decisão de publicar está em [#16](https://github.com/douglasabnovato/valoriza/issues/16).
 
-Critérios do MVP (N1): 8 de 10 aplicáveis atendidos em 16/11/2026, Finalizado: sim. O critério 8 voltou ao denominador como Parcial: numa API sem tela, ele é avaliado por erros legíveis em português, contrato OpenAPI testado e códigos coerentes, e a regra está em decisão no engenharia ([docs/MVP.md](docs/MVP.md)). A `main` exige PR e o job `raiz` do CI verde.
+Critérios do MVP (N1): 8 de 10 aplicáveis atendidos em 16/11/2026, Finalizado: sim. O critério 8 voltou ao denominador como Parcial: numa API sem tela, ele é avaliado por erros legíveis em português, contrato OpenAPI testado e códigos coerentes, e a regra está em decisão no engenharia ([docs/MVP.md](docs/MVP.md)). A `main` exige PR e o job `raiz` do CI verde. Os alertas do Dependabot estão ligados, com 0 abertos em 16/11/2026; o critério 9 segue Parcial só pelo banco no histórico (#11).
 
 **O que foi feito**
 
@@ -22,7 +22,7 @@ Critérios do MVP (N1): 8 de 10 aplicáveis atendidos em 16/11/2026, Finalizado:
 - [#11](https://github.com/douglasabnovato/valoriza/issues/11) Decidir o que fazer com o banco de 9 usuários que segue no histórico (responsável).
 - [#14](https://github.com/douglasabnovato/valoriza/issues/14) Limitar elogios repetidos para a mesma pessoa e o mesmo valor.
 - [#16](https://github.com/douglasabnovato/valoriza/issues/16) Decidir a publicação da API no Render (responsável).
-- [#22](https://github.com/douglasabnovato/valoriza/issues/22) Ligar os alertas do Dependabot (responsável).
+- [#22](https://github.com/douglasabnovato/valoriza/issues/22) Alertas do Dependabot: ligados em 16/11/2026, com 0 abertos; a evidência está na issue, e fechá-la é do responsável.
 
 **Onde está a documentação**
 

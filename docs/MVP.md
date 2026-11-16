@@ -1,12 +1,12 @@
 # MVP — valoriza
 
-> Criado em 02/11/2026; revisto em 16/11/2026. Meta: N1 (estudo). Testado no Windows, com Node 24, no clone da `feature/2026-11-16`. Não houve teste com pessoas nem em aparelho real.
+> Criado em 02/11/2026; revisto em 16/11/2026 (critério 9 com os alertas do Dependabot ligados, 14h57). Meta: N1 (estudo). Testado no Windows, com Node 24, no clone da `feature/2026-11-16`. Não houve teste com pessoas nem em aparelho real.
 
 **Resumo:** 8 de 10 aplicáveis atendidos
 
 **Finalizado:** sim
 
-**Nível:** N1 (estudo). **Estado em 16/11/2026 (critério 8 revisto pela decisão do responsável "em valoriza, avaliar a api"; ciclo de 15/11/2026; as decisões D1 a D7 de 10/11/2026 seguem em `engenharia/decisoes/2026-11-10-ciclo-faixa-90.md`):** 8 de 10 critérios aplicáveis atendem (1, 2, 3, 4, 6, 10, 11, 12); 2 parciais: o 9, que depende do responsável (#11), e o 8, cuja régua para API sem interface está em decisão no engenharia (douglasabnovato/engenharia#43, `depende-do-responsavel`); 5 e 7 não se aplicam (N1). Finalizado pela decisão 4 do processo: o que falta depende do responsável e tem issue com `depende-do-responsavel`.
+**Nível:** N1 (estudo). **Estado em 16/11/2026 (critério 8 revisto pela decisão do responsável "em valoriza, avaliar a api"; ciclo de 15/11/2026; as decisões D1 a D7 de 10/11/2026 seguem em `engenharia/decisoes/2026-11-10-ciclo-faixa-90.md`):** 8 de 10 critérios aplicáveis atendem (1, 2, 3, 4, 6, 10, 11, 12); 2 parciais: o 9, que depende do responsável pelo banco no histórico (#11), e o 8, cuja régua para API sem interface está em decisão no engenharia (douglasabnovato/engenharia#43, `depende-do-responsavel`); 5 e 7 não se aplicam (N1). Finalizado pela decisão 4 do processo: o que falta depende do responsável e tem issue com `depende-do-responsavel`.
 
 ## 1. Critérios: 8 de 10 aplicáveis atendidos
 
@@ -20,7 +20,7 @@
 | 6 | Falhas tratadas | Erro, vazio e carregamento têm resposta clara | Atende: Coberto pelos testes de API; há `AppError` e validação por schema. |
 | 7 | Desempenho aceitável | LCP de até 2,5 s no celular | Não se aplica (N1): sem publicação; decisão em #16. |
 | 8 | Acessibilidade básica | axe e teclado | Parcial: a régua não tem critério de acessibilidade para API sem interface; avaliado por mensagens de erro legíveis, contrato OpenAPI testado e códigos coerentes; a regra está em decisão no engenharia (douglasabnovato/engenharia#43; acompanhada em #25). `npm test`, 16/11/2026: 17 de 17 passam. O `tests/erros.test.ts` percorre 17 casos de 400, 401, 403, 404, 409 e 422 e mais 404 de rota inexistente, 413 e 500: todos respondem JSON `{ error }` com mensagem em português, sem texto padrão em inglês, e cada status está na operação certa do `docs/openapi.yaml`. O `tests/openapi.test.ts` confere as rotas do contrato nos dois sentidos. Corpo acima de 10 kB passou a responder 413 (antes caía em 500). |
-| 9 | Segurança e conformidade | Riscos decididos | Parcial: `npm audit --omit=dev`, 10/11/2026: 0 vulnerabilidades. O banco antigo saiu do Git em 02/11/2026, mas segue no histórico em 5 versões. Conferência de 10/11/2026 (decisão D4), sem imprimir valores: na versão de 9 usuários, 4 e-mails usam domínios que parecem de teste e 5 usam `gmail.com` sem nada que indique teste no nome do usuário. Não dá para afirmar que são fictícios, então a ADR de risco aceito não foi escrita e a decisão segue com o responsável (#11). As senhas estão com hash bcrypt. Os alertas do Dependabot estão desligados no repositório (API 403 em 15/11/2026, #22). |
+| 9 | Segurança e conformidade | Riscos decididos | Parcial: o banco antigo saiu do Git em 02/11/2026, mas segue no histórico em 5 versões. Conferência de 10/11/2026 (decisão D4), sem imprimir valores: na versão de 9 usuários, 4 e-mails usam domínios que parecem de teste e 5 usam `gmail.com` sem nada que indique teste no nome do usuário. Não dá para afirmar que são fictícios, então a ADR de risco aceito não foi escrita e a decisão segue com o responsável (#11). As senhas estão com hash bcrypt. Alertas do Dependabot ligados: `gh api "repos/douglasabnovato/valoriza/dependabot/alerts?state=open&per_page=100"`, 16/11/2026 14h57: 0 abertos; `npm ci` e `npm audit --omit=dev`, 16/11/2026 14h57: 0 vulnerabilidades. O que ainda segura o "Parcial" é só o banco no histórico (#11). |
 | 10 | Entrega confiável | CI verde antes de entrar na principal | Atende: `gh api repos/douglasabnovato/valoriza/rules/branches/main`, 10/11/2026: `deletion`, `non_fast_forward`, `pull_request` e `required_status_checks` com o job `raiz` (decisão D3) (#12). |
 | 11 | Testes dos fluxos críticos | Testes automatizados no CI | Atende: `npm run typecheck`, `npm test` (17, incluindo a paginação, a cobertura do OpenAPI nos dois sentidos e o formato dos erros) e `npm run build` no job `raiz` do CI, sem `skip`; 16/11/2026: 17 de 17 passam, 0 `skipped`. |
 | 12 | Documentação honesta | O README ensina a rodar | Atende: comandos conferidos com o `package.json` em 16/11/2026; contrato da API no README e em `docs/openapi.yaml`, com teste que confere todas as rotas; aviso de estudo. |
@@ -45,6 +45,8 @@ Paginação das listagens (#13), API descrita em OpenAPI com teste de cobertura 
 - Rota `GET /users/compliments/summary`. Testes: 11 (antes 9).
 
 ## 6. Histórico
+
+- 16/11/2026: alertas do Dependabot ligados pelo responsável; o critério 9 trocou "desligados (API 403)" por 0 alertas abertos e 0 no audit de produção, e segue Parcial pelo banco no histórico (#11). Resumo igual: 8 de 10.
 
 ### Tabela de 15/11/2026, antes da revisão do critério 8
 
