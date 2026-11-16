@@ -106,13 +106,14 @@ test("elogio completo: regras de negócio e listagens sem dados sensíveis", asy
 
   const received = await request(app).get("/users/compliments/receive").set("Authorization", `Bearer ${receiver.token}`);
   assert.equal(received.status, 200);
-  assert.equal(received.body.length, 1);
-  assert.equal(received.body[0].sender.name, "Dani");
+  assert.equal(received.body.total, 1);
+  assert.equal(received.body.items.length, 1);
+  assert.equal(received.body.items[0].sender.name, "Dani");
   assert.ok(!JSON.stringify(received.body).includes("password"));
   assert.ok(!JSON.stringify(received.body).includes("$2"));
 
   const sent = await request(app).get("/users/compliments/send").set(auth);
-  assert.equal(sent.body[0].receiver.name, "Rui");
+  assert.equal(sent.body.items[0].receiver.name, "Rui");
 
   const users = await request(app).get("/users").set(auth);
   assert.ok(users.body.every((user: object) => Object.keys(user).sort().join() === "id,name"));
@@ -161,5 +162,31 @@ test("seedAdmin cria o admin do ambiente, promove se já existir e ignora sem va
   assert.equal(login.status, 200);
   assert.equal(login.body.user.admin, true);
   assert.equal(await seedAdmin("ops@empresa.com", "senha-forte"), "promovido");
+});
+test("listagens paginam com page e limit e recusam valores fora da faixa", async () => {
+  const admin = await signUp("Lia", "lia@empresa.test");
+  await connection.query(`UPDATE users SET admin = 1 WHERE id = ?`, [admin.id]);
+  const auth = { Authorization: `Bearer ${admin.token}` };
+  const tag = await request(app).post("/tags").set(auth).send({ name: "Pagina" });
+  assert.equal(tag.status, 201, JSON.stringify(tag.body));
+  const receiver = await signUp("Teo", "teo@empresa.test");
+  for (const n of [1, 2, 3]) {
+    const r = await request(app).post("/compliments").set(auth).send({ tag_id: tag.body.id, user_receiver: receiver.id, message: `Elogio ${n}` });
+    assert.equal(r.status, 201);
+  }
+  const p2 = await request(app).get("/users/compliments/send?page=2&limit=2").set(auth);
+  assert.equal(p2.status, 200);
+  assert.deepEqual({ page: p2.body.page, limit: p2.body.limit, total: p2.body.total, n: p2.body.items.length }, { page: 2, limit: 2, total: 3, n: 1 });
+  const p1 = await request(app).get("/users/compliments/receive?limit=2").set("Authorization", `Bearer ${receiver.token}`);
+  assert.deepEqual({ page: p1.body.page, total: p1.body.total, n: p1.body.items.length }, { page: 1, total: 3, n: 2 });
+  const ids = new Set([...p1.body.items, ...p2.body.items].map((c: { id: string }) => c.id));
+  assert.equal(ids.size, 3, "as páginas 1 e 2 não se repetem e cobrem os 3 elogios");
+  const alem = await request(app).get("/users/compliments/send?page=9&limit=2").set(auth);
+  assert.deepEqual({ status: alem.status, n: alem.body.items.length, total: alem.body.total }, { status: 200, n: 0, total: 3 });
+  for (const q of ["limit=0", "limit=101", "page=-1", "page=abc"]) {
+    const bad = await request(app).get(`/users/compliments/send?${q}`).set(auth);
+    assert.equal(bad.status, 400, q);
+    assert.match(bad.body.error, /page|limit/);
+  }
 });
 /* fim de api.test.ts */

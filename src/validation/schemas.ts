@@ -25,6 +25,12 @@ export const createComplimentSchema = z.object({
   message: z.string().trim().min(1, "Escreva a mensagem do elogio.").max(500, "Mensagem com no máximo 500 caracteres."),
 });
 
+/* Paginação das listagens (RN05): page a partir de 1; limit de 1 a 100, padrão 20. */
+export const paginationSchema = z.object({
+  page: z.coerce.number({ error: "page deve ser um número." }).int("page deve ser um número inteiro.").min(1, "page deve ser 1 ou maior.").default(1),
+  limit: z.coerce.number({ error: "limit deve ser um número." }).int("limit deve ser um número inteiro.").min(1, "limit deve ficar entre 1 e 100.").max(100, "limit deve ficar entre 1 e 100.").default(20),
+});
+
 /* Valida o corpo e devolve os dados tipados, ou lança AppError 400 com a primeira mensagem. */
 export function parse<T>(schema: ZodSchema<T>, body: unknown): T {
   const result = schema.safeParse(body ?? {});

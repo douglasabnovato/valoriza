@@ -5,14 +5,16 @@ import { ComplimentsRepositories } from "../repositories/ComplimentsRepositories
 import { publicCompliment } from "../mappers/toPublic";
 
 class ListUserSendComplimentsService {
-  /* Lista com remetente, destinatário e tag resumidos (sem dados sensíveis). */
-  async execute(user_id: string) {
-    const compliments = await ComplimentsRepositories().find({
+  /* Uma página da lista, com remetente, destinatário e tag resumidos (sem dados sensíveis). */
+  async execute(user_id: string, { page, limit }: { page: number; limit: number } = { page: 1, limit: 20 }) {
+    const [compliments, total] = await ComplimentsRepositories().findAndCount({
       where: { user_sender: user_id },
       relations: { userSender: true, userReceiver: true, tag: true },
-      order: { created_at: "DESC" },
+      order: { created_at: "DESC", id: "ASC" },
+      skip: (page - 1) * limit,
+      take: limit,
     });
-    return compliments.map(publicCompliment);
+    return { items: compliments.map(publicCompliment), page, limit, total };
   }
 }
 
