@@ -1,6 +1,6 @@
 > **Projeto de estudo (N1).** Estado conferido em 10/11/2026. API sem publicação no ar: rode localmente (seção "Como executar"). Critérios em [docs/MVP.md](docs/MVP.md).
 
-## Estado e próximos passos (ciclo da faixa de 90%, 10/11/2026)
+## Estado e próximos passos (ciclo de 16/11/2026)
 
 Sem link publicado: o endereço antigo estava fora do ar em 31/10/2026, e a decisão de publicar está em [#16](https://github.com/douglasabnovato/valoriza/issues/16).
 
@@ -8,6 +8,7 @@ Critérios do MVP (N1): 8 de 9 aplicáveis atendidos em 10/11/2026, Finalizado: 
 
 **O que foi feito**
 
+- 16/11/2026: listagens de elogios com paginação (#13); API descrita em [docs/openapi.yaml](docs/openapi.yaml), com teste que confere todas as rotas (#15); hipótese com meta.
 - 10/11/2026: conferência do banco antigo que segue no histórico, sem imprimir valores: há e-mails que podem ser reais, então a decisão fica com o responsável (#11). Critérios 2 e 10 revistos pelas decisões D1 e D3.
 - `main` protegida pelo ruleset `principal-protegida` (10/11/2026).
 - Admin não se autoconcede, segredo do JWT fora do código e senha fora das respostas (PR #6, #7).
@@ -18,10 +19,9 @@ Critérios do MVP (N1): 8 de 9 aplicáveis atendidos em 10/11/2026, Finalizado: 
 **O que queremos fazer**
 
 - [#11](https://github.com/douglasabnovato/valoriza/issues/11) Decidir o que fazer com o banco de 9 usuários que segue no histórico (responsável).
-- [#13](https://github.com/douglasabnovato/valoriza/issues/13) Paginar as listagens de elogios.
 - [#14](https://github.com/douglasabnovato/valoriza/issues/14) Limitar elogios repetidos para a mesma pessoa e o mesmo valor.
-- [#15](https://github.com/douglasabnovato/valoriza/issues/15) Documentar a API em OpenAPI.
 - [#16](https://github.com/douglasabnovato/valoriza/issues/16) Decidir a publicação da API no Render (responsável).
+- [#22](https://github.com/douglasabnovato/valoriza/issues/22) Ligar os alertas do Dependabot (responsável).
 
 **Onde está a documentação**
 
