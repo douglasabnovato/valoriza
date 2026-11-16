@@ -41,7 +41,7 @@ function operacao(metodo: string, caminho: string) {
   const inicio = doc.indexOf(`\n  ${caminho}:\n`);
   assert.ok(inicio >= 0, `${caminho} não está no openapi.yaml`);
   const resto = doc.slice(inicio + 1);
-  const fimCaminho = resto.slice(1).search(/\n  \/[^\n]*:\n/);
+  const fimCaminho = resto.slice(1).search(/\n(  \/[^\n]*|[a-z][^\n]*):\n/);
   const blocoCaminho = fimCaminho < 0 ? resto : resto.slice(0, fimCaminho + 1);
   const m = blocoCaminho.indexOf(`\n    ${metodo}:\n`);
   assert.ok(m >= 0, `${metodo.toUpperCase()} ${caminho} não está no openapi.yaml`);
@@ -108,7 +108,7 @@ test("erros 400, 401, 403, 404, 409 e 422 têm {error} em português e status de
     documentado(metodo, caminho, status);
     vistos.add(status);
   }
-  assert.deepEqual([...vistos].sort(), [400, 401, 403, 404, 409, 422]);
+  assert.deepEqual([...vistos].sort((a, b) => a - b), [400, 401, 403, 404, 409, 422]);
 });
 
 test("erros comuns (rota inexistente 404 e corpo grande 413) seguem o formato e estão no OpenAPI", async () => {

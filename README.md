@@ -1,6 +1,6 @@
 > **Projeto de estudo (N1).** Estado conferido em 16/11/2026. API sem publicação no ar: rode localmente (seção "Como executar"). Critérios em [docs/MVP.md](docs/MVP.md).
 
-## Estado e próximos passos (ciclo de 15/11/2026)
+## Estado e próximos passos (ciclo de 15/11/2026, ajuste de 16/11/2026)
 
 Sem link publicado: o endereço antigo estava fora do ar em 31/10/2026, e a decisão de publicar está em [#16](https://github.com/douglasabnovato/valoriza/issues/16).
 
