@@ -32,6 +32,9 @@ export function createApp() {
     if (err.type === "entity.parse.failed") {
       return response.status(400).json({ error: "JSON inválido no corpo da requisição." });
     }
+    if (err.type === "entity.too.large") {
+      return response.status(413).json({ error: "Corpo da requisição grande demais (máximo de 10 kB)." });
+    }
     console.error(err);
     return response.status(500).json({ error: "Erro interno. Tente novamente em instantes." });
   });
