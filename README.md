@@ -66,7 +66,7 @@ Pré-requisito: Node.js 20 ou superior.
 npm install
 cp .env.example .env          # preencha JWT_SECRET com 32+ caracteres aleatórios
 npm run dev                   # http://localhost:3000 (migrations rodam sozinhas)
-npm test                      # 11 testes de integração com SQLite em memória
+npm test                      # 17 testes (API, contrato OpenAPI e erros) com SQLite em memória
 npm run build && npm start    # produção
 npm run admin:promote -- pessoa@empresa.com   # torna um usuário admin
 ```
