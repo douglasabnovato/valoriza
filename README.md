@@ -4,7 +4,7 @@
 
 Sem link publicado: o endereço antigo estava fora do ar em 31/10/2026, e a decisão de publicar está em [#16](https://github.com/douglasabnovato/valoriza/issues/16).
 
-Critérios do MVP (N1): 8 de 9 aplicáveis atendidos em 10/11/2026, Finalizado: sim ([docs/MVP.md](docs/MVP.md)). A `main` exige PR e o job `raiz` do CI verde.
+Critérios do MVP (N1): 8 de 9 aplicáveis atendidos em 16/11/2026, Finalizado: sim ([docs/MVP.md](docs/MVP.md)). A `main` exige PR e o job `raiz` do CI verde.
 
 **O que foi feito**
 
