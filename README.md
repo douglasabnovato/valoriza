@@ -1,13 +1,14 @@
-> **Projeto de estudo (N1).** Estado conferido em 15/11/2026. API sem publicação no ar: rode localmente (seção "Como executar"). Critérios em [docs/MVP.md](docs/MVP.md).
+> **Projeto de estudo (N1).** Estado conferido em 16/11/2026. API sem publicação no ar: rode localmente (seção "Como executar"). Critérios em [docs/MVP.md](docs/MVP.md).
 
 ## Estado e próximos passos (ciclo de 15/11/2026)
 
 Sem link publicado: o endereço antigo estava fora do ar em 31/10/2026, e a decisão de publicar está em [#16](https://github.com/douglasabnovato/valoriza/issues/16).
 
-Critérios do MVP (N1): 8 de 9 aplicáveis atendidos em 15/11/2026, Finalizado: sim ([docs/MVP.md](docs/MVP.md)). A `main` exige PR e o job `raiz` do CI verde.
+Critérios do MVP (N1): 8 de 10 aplicáveis atendidos em 16/11/2026, Finalizado: sim. O critério 8 voltou ao denominador como Parcial: numa API sem tela, ele é avaliado por erros legíveis em português, contrato OpenAPI testado e códigos coerentes, e a regra está em decisão no engenharia ([docs/MVP.md](docs/MVP.md)). A `main` exige PR e o job `raiz` do CI verde.
 
 **O que foi feito**
 
+- 16/11/2026: critério 8 avaliado pela API: `tests/erros.test.ts` confere que todo erro (400, 401, 403, 404, 409, 413, 422 e 500) responde `{ error }` em português e com status descrito no OpenAPI; corpo acima de 10 kB passou a responder 413.
 - 15/11/2026: listagens de elogios com paginação (#13); API descrita em [docs/openapi.yaml](docs/openapi.yaml), com teste que confere todas as rotas (#15); hipótese com meta.
 - 10/11/2026: conferência do banco antigo que segue no histórico, sem imprimir valores: há e-mails que podem ser reais, então a decisão fica com o responsável (#11). Critérios 2 e 10 revistos pelas decisões D1 e D3.
 - `main` protegida pelo ruleset `principal-protegida` (10/11/2026).
