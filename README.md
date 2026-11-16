@@ -74,6 +74,8 @@ npm run admin:promote -- pessoa@empresa.com   # torna um usuário admin
 
 Erros sempre no formato `{ "error": "mensagem" }`. Rotas com 🔒 exigem `Authorization: Bearer <token>`.
 
+Descrição completa em OpenAPI 3: [docs/openapi.yaml](./docs/openapi.yaml). Abra no [Swagger Editor](https://editor.swagger.io/) (File → Import file) para ver e testar as rotas. Um teste confere que toda rota de `src/routes.ts` está no arquivo.
+
 | Método | Rota | Corpo | Resposta |
 |---|---|---|---|
 | GET | `/health` | — | `200 {status}` |
