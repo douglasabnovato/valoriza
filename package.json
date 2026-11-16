@@ -7,7 +7,7 @@
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/src/server.js",
-    "test": "node -r ts-node/register --test tests/api.test.ts tests/openapi.test.ts",
+    "test": "node -r ts-node/register --test tests/api.test.ts tests/openapi.test.ts tests/erros.test.ts",
     "typecheck": "tsc --noEmit",
     "admin:promote": "ts-node src/scripts/promoteAdmin.ts"
   },
