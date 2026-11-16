@@ -1,14 +1,14 @@
-> **Projeto de estudo (N1).** Estado conferido em 10/11/2026. API sem publicação no ar: rode localmente (seção "Como executar"). Critérios em [docs/MVP.md](docs/MVP.md).
+> **Projeto de estudo (N1).** Estado conferido em 15/11/2026. API sem publicação no ar: rode localmente (seção "Como executar"). Critérios em [docs/MVP.md](docs/MVP.md).
 
-## Estado e próximos passos (ciclo de 16/11/2026)
+## Estado e próximos passos (ciclo de 15/11/2026)
 
 Sem link publicado: o endereço antigo estava fora do ar em 31/10/2026, e a decisão de publicar está em [#16](https://github.com/douglasabnovato/valoriza/issues/16).
 
-Critérios do MVP (N1): 8 de 9 aplicáveis atendidos em 16/11/2026, Finalizado: sim ([docs/MVP.md](docs/MVP.md)). A `main` exige PR e o job `raiz` do CI verde.
+Critérios do MVP (N1): 8 de 9 aplicáveis atendidos em 15/11/2026, Finalizado: sim ([docs/MVP.md](docs/MVP.md)). A `main` exige PR e o job `raiz` do CI verde.
 
 **O que foi feito**
 
-- 16/11/2026: listagens de elogios com paginação (#13); API descrita em [docs/openapi.yaml](docs/openapi.yaml), com teste que confere todas as rotas (#15); hipótese com meta.
+- 15/11/2026: listagens de elogios com paginação (#13); API descrita em [docs/openapi.yaml](docs/openapi.yaml), com teste que confere todas as rotas (#15); hipótese com meta.
 - 10/11/2026: conferência do banco antigo que segue no histórico, sem imprimir valores: há e-mails que podem ser reais, então a decisão fica com o responsável (#11). Critérios 2 e 10 revistos pelas decisões D1 e D3.
 - `main` protegida pelo ruleset `principal-protegida` (10/11/2026).
 - Admin não se autoconcede, segredo do JWT fora do código e senha fora das respostas (PR #6, #7).
@@ -85,8 +85,8 @@ Descrição completa em OpenAPI 3: [docs/openapi.yaml](./docs/openapi.yaml). Abr
 | POST 🔒 admin | `/tags` | `name` | `201 {id, name, name_custom}` — `403` sem admin, `409` duplicada |
 | GET 🔒 | `/tags` | — | `200 [{id, name, name_custom}]` |
 | POST 🔒 | `/compliments` | `tag_id`, `user_receiver`, `message` (1–500) | `201` elogio — `422` para si mesmo, `404` destinatário/tag |
-| GET 🔒 | `/users/compliments/send?page=1&limit=20` | — | `200 {items, page, limit, total}` elogios enviados, mais recentes primeiro — `400` se `page` < 1 ou `limit` fora de 1–100 |
-| GET 🔒 | `/users/compliments/receive?page=1&limit=20` | — | `200 {items, page, limit, total}` elogios recebidos, mais recentes primeiro — `400` se `page` < 1 ou `limit` fora de 1–100 |
+| GET 🔒 | `/users/compliments/send?page=1&limit=20` | — | `200 {items, page, limit, total}` elogios enviados, mais recentes primeiro (no mesmo segundo, pelo id) — `400` se `page` < 1 ou `limit` fora de 1–100 |
+| GET 🔒 | `/users/compliments/receive?page=1&limit=20` | — | `200 {items, page, limit, total}` elogios recebidos, mais recentes primeiro (no mesmo segundo, pelo id) — `400` se `page` < 1 ou `limit` fora de 1–100 |
 | GET 🔒 | `/users/compliments/summary` | — | `200 {total, tags: [{tag_id, tag, total}]}` — elogios recebidos por valor, do maior para o menor |
 
 ### ☁️ Hospedagem gratuita

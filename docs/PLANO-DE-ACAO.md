@@ -25,9 +25,9 @@ Priorização por **MoSCoW** e ordenação por **ganho ÷ esforço** (esforço: 
 - Migration aplicada numa cópia do banco atual sem perda de registros válidos.
 - `grep -rn "4f93ac9d" src` sem resultados.
 
-## Ciclo de 16/11/2026
+## Ciclo de 15/11/2026
 
-> Branch `feature/2026-11-16` → `developer/sprint-2026-11-12` → `main`. A sprint ainda não foi para a `main` (PR #20). Nível: Estudo (N1), só API.
+> Branch `feature/2026-11-16` (o nome usa a data em UTC; o trabalho é de 15/11/2026, no horário de Brasília) → `developer/sprint-2026-11-12` → `main`. A sprint ainda não foi para a `main` (PR #20). Nível: Estudo (N1), só API.
 
 **Problema e público.** Equipes registram elogios entre colegas, ligados aos valores da empresa, por uma API.
 
@@ -35,7 +35,7 @@ Priorização por **MoSCoW** e ordenação por **ganho ÷ esforço** (esforço: 
 - A hipótese não tem meta nem o "saberemos quando" que a régua pede (critério 2).
 - As listagens devolvem tudo de uma vez; com muitos elogios, a resposta cresce sem limite (#13).
 - O contrato da API só existe numa tabela do README; não há descrição que uma ferramenta leia (#15).
-- Os alertas do Dependabot estão desligados no repositório (API respondeu 403 em 16/11/2026): o critério 9 depende só do `npm audit` local (#22).
+- Os alertas do Dependabot estão desligados no repositório (API respondeu 403 em 15/11/2026): o critério 9 depende só do `npm audit` local (#22).
 
 **Pesquisa.**
 
@@ -58,7 +58,7 @@ Priorização por **MoSCoW** e ordenação por **ganho ÷ esforço** (esforço: 
 
 **Engenharia.** Sem mudança de arquitetura. As listagens usam `findAndCount` com `skip` e `take`; a validação da página fica no `zod`, como a do corpo.
 
-**Definição de pronto.** `npm test` (13), `npm run typecheck` e `npm run build` passando no CI; `docs/MVP.md` com evidência.
+**Definição de pronto.** `npm run typecheck`, `npm test` (14) e `npm run build` passando no CI; `docs/MVP.md` com evidência.
 
 ## Ciclo de 10/11/2026 (faixa de 90%)
 

@@ -179,6 +179,10 @@ test("listagens paginam com page e limit e recusam valores fora da faixa", async
   assert.deepEqual({ page: p2.body.page, limit: p2.body.limit, total: p2.body.total, n: p2.body.items.length }, { page: 2, limit: 2, total: 3, n: 1 });
   const p1 = await request(app).get("/users/compliments/receive?limit=2").set("Authorization", `Bearer ${receiver.token}`);
   assert.deepEqual({ page: p1.body.page, total: p1.body.total, n: p1.body.items.length }, { page: 1, total: 3, n: 2 });
+  const ids = new Set([...p1.body.items, ...p2.body.items].map((c: { id: string }) => c.id));
+  assert.equal(ids.size, 3, "as páginas 1 e 2 não se repetem e cobrem os 3 elogios");
+  const alem = await request(app).get("/users/compliments/send?page=9&limit=2").set(auth);
+  assert.deepEqual({ status: alem.status, n: alem.body.items.length, total: alem.body.total }, { status: 200, n: 0, total: 3 });
   for (const q of ["limit=0", "limit=101", "page=-1", "page=abc"]) {
     const bad = await request(app).get(`/users/compliments/send?${q}`).set(auth);
     assert.equal(bad.status, 400, q);
