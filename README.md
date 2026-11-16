@@ -83,8 +83,8 @@ Erros sempre no formato `{ "error": "mensagem" }`. Rotas com 🔒 exigem `Author
 | POST 🔒 admin | `/tags` | `name` | `201 {id, name, name_custom}` — `403` sem admin, `409` duplicada |
 | GET 🔒 | `/tags` | — | `200 [{id, name, name_custom}]` |
 | POST 🔒 | `/compliments` | `tag_id`, `user_receiver`, `message` (1–500) | `201` elogio — `422` para si mesmo, `404` destinatário/tag |
-| GET 🔒 | `/users/compliments/send` | — | `200` elogios enviados |
-| GET 🔒 | `/users/compliments/receive` | — | `200` elogios recebidos |
+| GET 🔒 | `/users/compliments/send?page=1&limit=20` | — | `200 {items, page, limit, total}` elogios enviados, mais recentes primeiro — `400` se `page` < 1 ou `limit` fora de 1–100 |
+| GET 🔒 | `/users/compliments/receive?page=1&limit=20` | — | `200 {items, page, limit, total}` elogios recebidos, mais recentes primeiro — `400` se `page` < 1 ou `limit` fora de 1–100 |
 | GET 🔒 | `/users/compliments/summary` | — | `200 {total, tags: [{tag_id, tag, total}]}` — elogios recebidos por valor, do maior para o menor |
 
 ### ☁️ Hospedagem gratuita
