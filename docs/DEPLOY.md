@@ -2,6 +2,8 @@
 
 Plano de ação para publicar a API em hospedagem gratuita.
 
+> **Situação em 18/11/2026: publicação parada.** A API está fora do ar desde a conferência de 31/10/2026. `curl -sI https://valoriza-api.onrender.com/health`, 18/11/2026 20h11: HTTP 404 com `x-render-routing: no-server` (não há serviço no Render). Publicar de novo ou não é decisão do responsável ([#16](https://github.com/douglasabnovato/valoriza/issues/16)). Para usar a API, rode localmente (README, seção "Como executar"). O plano abaixo fica como registro de como publicar.
+
 ## 1. Desafio
 
 Colocar no ar, sem custo, uma API Express + TypeORM + SQLite com login JWT e papel de admin, **sem publicar os dados reais** que estão no histórico do Git.
@@ -21,7 +23,7 @@ Colocar no ar, sem custo, uma API Express + TypeORM + SQLite com login JWT e pap
 | Mudança | Arquivo | Por quê |
 |---|---|---|
 | Admin garantido na subida por `ADMIN_EMAIL` e `ADMIN_PASSWORD` | `src/database/seedAdmin.ts`, `src/server.ts`, `src/config.ts` | O plano free não tem Shell para `npm run admin:promote` e o banco volta vazio a cada reinício |
-| Teste do seed (cria, promove, ignora sem variáveis) | `tests/api.test.ts` | Agora 9 testes |
+| Teste do seed (cria, promove, ignora sem variáveis) | `tests/api.test.ts` | Eram 9 testes na época; hoje `npm test` roda 17 (18/11/2026) |
 | Variáveis novas documentadas | `.env.example` | Contrato do ambiente |
 | Blueprint do Render | `render.yaml` | Infraestrutura como código |
 | Seção de hospedagem e link para este plano | `README.md` | Porta de entrada do projeto |
@@ -30,8 +32,8 @@ Verificação feita antes da entrega: `npm ci` limpo, 9 testes passando, `typech
 
 ### Pontos de atenção (LGPD e segurança)
 
-- **`src/database/database.sqlite` está versionado com 9 usuários reais** (nomes e e-mails), apesar do `.gitignore`. Tirar do índice não apaga do histórico: quem clonar o repositório público ainda acessa os commits antigos.
-- `npm audit` aponta 11 vulnerabilidades que só se resolvem com versão major (`typeorm` 0.2 → 0.3, `jsonwebtoken` 8 → 9). Não foram aplicadas porque mudam a API do ORM (decisão estrutural para validar). Recomendação: tratar como tarefa do plano de ação.
+- **O `src/database/database.sqlite` saiu do Git em 02/11/2026 (PR #9), mas segue no histórico** em 5 versões; a maior tem 9 usuários. Não dá para afirmar se os registros são reais ou de teste (conferência de 10/11/2026 no `docs/MVP.md`, critério 9). Limpar o histórico ou aceitar o risco é decisão do responsável ([#11](https://github.com/douglasabnovato/valoriza/issues/11)). Tirar do índice não apaga do histórico: quem clonar o repositório público ainda acessa os commits antigos.
+- As 11 vulnerabilidades do `npm audit` da época foram resolvidas com o `typeorm` 1 e o `jsonwebtoken` 9 (PR #9 e #10). `npm audit --omit=dev`, 18/11/2026: 0 vulnerabilidades.
 
 ### Limitações conhecidas do plano gratuito
 
@@ -55,11 +57,13 @@ Escolha **uma** das opções:
 
 ### Etapa 1 · Validar localmente (Git Bash)
 
-1. `cd /c/ambiente-projeto/ser-mvp/valoriza`
+1. Entrar na pasta do clone (`cd valoriza`)
 2. `npm ci`
-3. `npm run typecheck && npm test && npm run build` (esperado: 9 testes passando)
+3. `npm run typecheck && npm test && npm run build` (esperado em 18/11/2026: 17 testes passando)
 
 ### Etapa 2 · Subir para o GitHub
+
+> Já feita: o banco e os rascunhos saíram do Git em 02/11/2026 (PR #9) e 06/11/2026 (PR #17). Os passos ficam como registro.
 
 1. `git rm --cached src/database/database.sqlite` (o arquivo continua na sua máquina, só sai do Git)
 2. `git rm testtypescript.ts testtypescript.js` (arquivos de rascunho)

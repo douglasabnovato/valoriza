@@ -22,6 +22,7 @@ Critérios do MVP (N1): 8 de 10 aplicáveis atendidos em 16/11/2026, Finalizado:
 - [#11](https://github.com/douglasabnovato/valoriza/issues/11) Decidir o que fazer com o banco de 9 usuários que segue no histórico (responsável).
 - [#14](https://github.com/douglasabnovato/valoriza/issues/14) Limitar elogios repetidos para a mesma pessoa e o mesmo valor.
 - [#16](https://github.com/douglasabnovato/valoriza/issues/16) Decidir a publicação da API no Render (responsável).
+- [#33](https://github.com/douglasabnovato/valoriza/issues/33) Migrar para o Express 5 e exigir o Node 22.
 - [#22](https://github.com/douglasabnovato/valoriza/issues/22) Alertas do Dependabot: ligados em 16/11/2026, com 0 abertos; a evidência está na issue, e fechá-la é do responsável.
 
 **Onde está a documentação**
@@ -318,7 +319,7 @@ Criar a Estrutura de Compliments
 ### 🚀 Avançar com Novas Funcionalidades 
 
 - [ ] notificação via email com serviço de recebimento
-- [x] colocar em produção em hospedagem gratuita (Render, ver docs/DEPLOY.md)
+- [ ] colocar em produção em hospedagem gratuita (Render): publicação parada desde 31/10/2026, decisão em [#16](https://github.com/douglasabnovato/valoriza/issues/16); plano em docs/DEPLOY.md
 - [ ] criar um frontend
 
 #### 🔖 Detalhes no Notion
